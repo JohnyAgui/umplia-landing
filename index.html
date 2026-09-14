@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-site-verification" content="6DrOUIQyfwenfchEwDocyejNcKbzNcxcVED6Dw6bM1s" />
+<link rel="icon" type="image/png" sizes="48x48" href="favicon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+<meta name="description" content="Umplia es la plataforma de validaci&#243;n de dossieres regulatorios con IA para la industria farmac&#233;utica en Latinoam&#233;rica. Clasificaci&#243;n CTD autom&#225;tica, validaci&#243;n de cumplimiento y gesti&#243;n centralizada para INVIMA, COFEPRIS, ANMAT e ISP.">
+<meta name="theme-color" content="#FFFFFF">
+<meta property="og:title" content="Umplia &#8212; Dossier Intelligence Platform">
+<meta property="og:description" content="Validaci&#243;n de dossieres regulatorios con IA para farmac&#233;utica en Latinoam&#233;rica.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://umplia.com/">
+<title>Umplia &#8212; Dossier Intelligence Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+/* ============================================================
+   UMPLIA — DESIGN TOKENS (light canvas)
+   ============================================================ */
+:root{
+  /* Lienzo */
+  --bg:#FFFFFF;          /* fondo principal: blanco */
+  --bg-alt:#FAFAF9;      /* banda de separacion, apenas perceptible */
+  --bg-wash:#F6F2F8;     /* lavado purpura muy tenue tras el producto */
+  /* Tinta */
+  --ink:#0A0A0A;
+  --ink-2:#3F3F46;
+  --ink-3:#71717A;
+  --ink-4:#A1A1AA;
+  /* Lineas */
+  --line:#E7E5E4;
+  --line-2:#D6D3D1;
+  /* Marca */
+  --purple-deep:#3B0F4A;
+  --purple-mid:#5F266C;
+  --purple:#903AA4;
+  --purple-vivid:#A949BF;
+  --lavender:#C687D5;
+  --lavender-soft:#E0BEE8;
+  --surface-deep:#220138;
+
+  --f:'Montserrat',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+  --maxw:1120px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+
+html{scroll-behavior:smooth;background:var(--bg);-webkit-text-size-adjust:100%}
+body{font-family:var(--f);background:var(--bg);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;line-height:1.5;letter-spacing:-.011em}
+img{max-width:100%;height:auto;display:block}  /* height:auto es obligatorio: los atributos width/height de cada <img> deformarian la imagen al limitar el ancho */
+::selection{background:var(--lavender-soft);color:var(--purple-deep)}
+:focus-visible{outline:2px solid var(--purple);outline-offset:3px;border-radius:3px}
+
+.skip-link{position:absolute;top:-200%;left:0;background:var(--ink);color:#fff;padding:.6rem 1.1rem;z-index:500;font-size:.82rem;text-decoration:none;border-radius:0 0 6px 0}
+.skip-link:focus{top:0}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 2rem;width:100%}
+.wrap-wide{max-width:1320px;margin:0 auto;padding:0 2rem;width:100%}
+
+/* ============================================================
+   NAV — minima, logo centrado
+   ============================================================ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1.05rem 0;background:rgba(255,255,255,.72);backdrop-filter:blur(18px) saturate(180%);-webkit-backdrop-filter:blur(18px) saturate(180%);border-bottom:1px solid transparent;transition:border-color .4s var(--ease),background .4s var(--ease)}
+.nav.scrolled{border-bottom-color:var(--line);background:rgba(255,255,255,.86)}
+.ni{max-width:1320px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:1rem;position:relative}
+.nk{display:flex;align-items:center;gap:1.9rem;justify-self:start}
+.nk a{text-decoration:none;color:var(--ink-2);font-size:.79rem;font-weight:500;transition:color .25s;white-space:nowrap}
+.nk a:hover{color:var(--ink)}
+.nl{justify-self:center;display:flex;align-items:center;text-decoration:none}
+.nl img{height:29px;width:auto}
+.nav-right{justify-self:end;display:flex;align-items:center;gap:.65rem}
+/* Selector de idioma tipografico: sin caja ni relleno solido, para no competir
+   con el boton de CTA que va justo al lado. El separador es un hairline. */
+.lt{display:flex;align-items:center;flex-shrink:0}
+.lb{padding:4px 7px;border:none;background:none;font-family:var(--f);font-size:.76rem;font-weight:500;letter-spacing:.01em;color:var(--ink-4);cursor:pointer;transition:color .25s;line-height:1}
+.lb:hover{color:var(--ink)}
+.lb.active{color:var(--ink);font-weight:600}
+.lb + .lb{position:relative;padding-left:12px}
+.lb + .lb::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:1px;height:11px;background:var(--line-2)}
+.nc{padding:9px 19px;background:var(--purple);color:#fff;border-radius:100px;font-family:var(--f);font-size:.77rem;font-weight:600;text-decoration:none;transition:all .3s var(--ease);white-space:nowrap}
+.nc:hover{background:var(--purple-mid)}
+.hb{display:none;background:none;border:1px solid var(--line-2);border-radius:5px;width:32px;height:32px;cursor:pointer;align-items:center;justify-content:center;flex-shrink:0}
+.hb svg{width:16px;height:16px;color:var(--ink)}
+
+/* ============================================================
+   BOTONES
+   ============================================================ */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:14px 30px;border-radius:100px;font-family:var(--f);font-size:.9rem;font-weight:600;cursor:pointer;text-decoration:none;border:none;transition:all .32s var(--ease)}
+.btn-primary{background:var(--purple);color:#fff}
+.btn-primary:hover{background:var(--purple-mid);transform:translateY(-1px);box-shadow:0 10px 30px rgba(95,38,108,.25)}
+.btn-text{display:inline-flex;align-items:center;gap:.45rem;color:var(--ink);font-size:.9rem;font-weight:500;text-decoration:none;padding:14px 8px;transition:color .25s}
+.btn-text svg{width:14px;height:14px;transition:transform .3s var(--ease)}
+.btn-text:hover{color:var(--purple)}
+.btn-text:hover svg{transform:translateX(4px)}
+
+/* ============================================================
+   HERO — 100vh, blanco, tipografia como unico elemento
+   ============================================================ */
+.hero{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:9rem 0 3rem;background:var(--bg);position:relative;overflow:hidden;isolation:isolate}
+.hero .wrap{position:relative;z-index:1}
+
+/* ------------------------------------------------------------
+   FONDO ANIMADO DEL HERO — mismo lenguaje que la pantalla de login:
+   la marca como filigrana, lavados de color suaves y facetas angulares.
+   Todo con transform/opacity para que lo mueva la GPU.
+   ------------------------------------------------------------ */
+.hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.aur{position:absolute;border-radius:50%;filter:blur(64px);will-change:transform}
+.a1{width:46vw;height:46vw;min-width:420px;min-height:420px;left:-9vw;top:-12vw;background:radial-gradient(circle,rgba(169,73,191,.20),rgba(169,73,191,0) 68%);animation:aur1 24s ease-in-out infinite}
+.a2{width:38vw;height:38vw;min-width:340px;min-height:340px;right:-7vw;top:4vw;background:radial-gradient(circle,rgba(198,135,213,.24),rgba(198,135,213,0) 68%);animation:aur2 29s ease-in-out infinite}
+.a3{width:54vw;height:54vw;min-width:460px;min-height:460px;left:24vw;bottom:-26vw;background:radial-gradient(circle,rgba(95,38,108,.14),rgba(95,38,108,0) 70%);animation:aur3 34s ease-in-out infinite}
+@keyframes aur1{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(4vw,3vw,0) scale(1.14)}}
+@keyframes aur2{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(-5vw,4vw,0) scale(1.1)}}
+@keyframes aur3{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(3vw,-4vw,0) scale(1.08)}}
+
+/* facetas: ecos angulares del fondo del login */
+.shard{position:absolute;opacity:.5;will-change:transform}
+.s1{width:30vw;height:44vw;left:4vw;top:2vw;background:linear-gradient(150deg,rgba(144,58,164,.07),rgba(144,58,164,0) 72%);clip-path:polygon(0 0,100% 26%,58% 100%);animation:sh1 28s ease-in-out infinite}
+.s2{width:26vw;height:38vw;right:6vw;bottom:2vw;background:linear-gradient(200deg,rgba(198,135,213,.08),rgba(198,135,213,0) 70%);clip-path:polygon(100% 0,32% 40%,78% 100%);animation:sh2 32s ease-in-out infinite}
+@keyframes sh1{0%,100%{transform:translate3d(0,0,0) rotate(0)}50%{transform:translate3d(2vw,-2vw,0) rotate(5deg)}}
+@keyframes sh2{0%,100%{transform:translate3d(0,0,0) rotate(0)}50%{transform:translate3d(-2vw,2vw,0) rotate(-6deg)}}
+
+/* la marca, como filigrana que respira */
+/* Muy desaturada y apenas visible: es atmosfera, no un logo. Si compite con
+   el titular deja de ser fondo. */
+.hero-mark{position:absolute;left:50%;top:50%;width:min(42vw,500px);opacity:.03;filter:grayscale(.8) blur(.4px);transform:translate(-50%,-50%);animation:markFloat 30s ease-in-out infinite;will-change:transform}
+@keyframes markFloat{0%,100%{transform:translate(-50%,-50%) rotate(-2.5deg) scale(1)}50%{transform:translate(-50%,-53%) rotate(2.5deg) scale(1.06)}}
+.eyebrow{font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.2em;color:var(--purple);margin-bottom:2.2rem}
+.hero h1{font-size:clamp(2.3rem,6.2vw,5.2rem);line-height:1.04;font-weight:300;letter-spacing:-.045em;color:var(--ink);margin:0 auto 1.9rem;text-wrap:balance}
+.hero h1 em{font-style:normal;font-weight:inherit;color:var(--ink)}  /* titular a una sola tinta: negro */
+.hero-sub{font-size:clamp(1rem,1.5vw,1.2rem);line-height:1.62;color:var(--ink-2);max-width:88ch;margin:0 auto 2.8rem;font-weight:300;text-wrap:balance}
+.hero-cta{display:flex;gap:.6rem;justify-content:center;align-items:center;flex-wrap:wrap}
+
+/* ============================================================
+   PRODUCTO EN ESCENA — el producto es el heroe (principio Apple)
+   ============================================================ */
+.stage{padding:0 0 7rem;position:relative}
+.stage::before{content:'';position:absolute;top:-6%;left:50%;transform:translateX(-50%);width:min(1180px,92vw);height:78%;background:radial-gradient(ellipse at 50% 40%,var(--bg-wash) 0%,rgba(246,242,248,0) 70%);pointer-events:none}
+.stage-inner{position:relative}
+.shot{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:0 2px 4px rgba(10,10,10,.04),0 24px 60px -16px rgba(10,10,10,.14),0 50px 120px -30px rgba(59,15,74,.18)}
+.shot-bar{display:flex;align-items:center;gap:6px;padding:10px 14px;background:#FCFCFB;border-bottom:1px solid var(--line)}
+.shot-bar i{width:9px;height:9px;border-radius:50%;background:var(--line-2);flex-shrink:0}
+.shot-bar .u{margin-left:.8rem;font-size:.65rem;color:var(--ink-4);font-style:normal;font-family:var(--mono);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.shot img{width:100%;cursor:zoom-in}
+.stage-cap{text-align:center;margin-top:1.5rem;font-size:.76rem;color:var(--ink-4);font-weight:400}
+
+/* ============================================================
+   SECCIONES
+   ============================================================ */
+.sec{padding:8.5rem 0}
+.sec.alt{background:var(--bg-alt)}
+.sec.hair{border-top:1px solid var(--line)}
+.sec-head{text-align:center;max-width:760px;margin:0 auto 4.5rem}
+.sec-head.wide{max-width:1000px}  /* titulares largos que deben romper en menos lineas */
+.sec-head.wide .sec-sub{max-width:none}  /* el parrafo usa todo el ancho del bloque */
+.sec-label{display:block;font-size:.67rem;font-weight:600;text-transform:uppercase;letter-spacing:.2em;color:var(--purple);margin-bottom:1.3rem}
+.sec-title{font-size:clamp(1.95rem,4vw,3.3rem);font-weight:300;letter-spacing:-.04em;line-height:1.1;color:var(--ink);margin-bottom:1.3rem}
+.sec-title em{font-style:normal;font-weight:400;color:var(--purple-mid)}
+.sec-sub{font-size:1.05rem;line-height:1.68;color:var(--ink-2);font-weight:300;max-width:60ch;margin:0 auto}
+.sec-head.left{text-align:left;margin-left:0;margin-right:0}
+.sec-head.left .sec-sub{margin-left:0}
+
+/* Reveal */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv.v{opacity:1;transform:none}
+.d1{transition-delay:.09s}.d2{transition-delay:.18s}.d3{transition-delay:.27s}
+
+/* ============================================================
+   AGENCIAS — tira de confianza
+   ============================================================ */
+.agencies{display:flex;align-items:center;justify-content:center;gap:3.4rem;flex-wrap:wrap}
+.agencies-label{width:100%;text-align:center;font-size:.64rem;text-transform:uppercase;letter-spacing:.2em;color:var(--ink-4);margin-bottom:.4rem}
+.agency{font-size:.92rem;font-weight:600;letter-spacing:.11em;color:var(--ink-4);transition:color .3s}
+.agency:hover{color:var(--purple-mid)}
+
+/* ============================================================
+   METRICAS — sin cajas, solo hairlines
+   ============================================================ */
+.metrics{display:grid;grid-template-columns:repeat(4,1fr)}
+.met{text-align:center;padding:1rem 1.4rem;border-left:1px solid var(--line)}
+.met:first-child{border-left:none}
+.met .n{font-size:clamp(2.1rem,4vw,3.1rem);font-weight:300;letter-spacing:-.05em;color:var(--ink);line-height:1}
+.met .n span{color:inherit}  /* las unidades (%, min, x) van en el mismo negro solido */
+.met .l{font-size:.79rem;color:var(--ink-3);margin-top:.8rem;font-weight:400;line-height:1.45}
+
+/* ============================================================
+   COLUMNAS DE TEXTO
+   ============================================================ */
+.cols-3{display:grid;grid-template-columns:repeat(3,1fr);gap:3.2rem}
+.col h3{font-size:1.05rem;font-weight:600;letter-spacing:-.025em;margin-bottom:.75rem;color:var(--ink)}
+.col p{font-size:.92rem;line-height:1.7;color:var(--ink-2);font-weight:300}
+.col .rule{width:28px;height:2px;background:var(--purple);margin-bottom:1.5rem;border-radius:2px}
+/* ============================================================
+   TRES PILARES — escenario fijo + texto que avanza con el scroll
+   ============================================================ */
+.pil{display:grid;grid-template-columns:.92fr 1.08fr;gap:4.5rem;align-items:start}
+.pil-stage{position:sticky;top:7.5rem}
+.pil-card{position:relative;aspect-ratio:4/3.15;border-radius:16px;border:1px solid var(--line);background:#fff;box-shadow:0 2px 4px rgba(10,10,10,.03),0 20px 50px -18px rgba(10,10,10,.14);overflow:hidden}
+.pnl{position:absolute;inset:0;padding:1.9rem;display:flex;flex-direction:column;justify-content:center;gap:.5rem;opacity:0;transform:translateY(12px);transition:opacity .55s var(--ease),transform .55s var(--ease);pointer-events:none}
+.pnl.on{opacity:1;transform:none}
+.pnl-h{font-size:.61rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-4);margin-bottom:.9rem}
+.pil-dots{display:flex;gap:.45rem;justify-content:center;margin-top:1.4rem}
+.pil-dot{width:22px;height:3px;border-radius:2px;background:var(--line-2);transition:background .45s var(--ease)}
+.pil-dot.on{background:var(--purple)}
+
+/* Texto de los pilares: se marca el activo con el riel y el numero,
+   nunca atenuando el cuerpo (bajar la opacidad rompe el contraste). */
+.pil-item{padding:4.5rem 0 4.5rem 1.75rem;border-left:2px solid var(--line);transition:border-color .5s var(--ease)}
+.pil-item:first-child{padding-top:0}
+.pil-item:last-child{padding-bottom:0}
+.pil-item.on{border-left-color:var(--purple)}
+.pil-num{font-size:.7rem;font-weight:700;letter-spacing:.16em;color:var(--ink-4);margin-bottom:.9rem;transition:color .45s var(--ease)}
+.pil-item.on .pil-num{color:var(--purple)}
+.pil-item h3{font-size:clamp(1.45rem,2.5vw,2rem);font-weight:300;letter-spacing:-.035em;line-height:1.16;color:var(--ink);margin-bottom:.7rem}
+.pil-tag{font-size:1rem;font-weight:500;color:var(--ink);margin-bottom:.95rem;letter-spacing:-.02em;line-height:1.45}
+.pil-item p{font-size:.95rem;line-height:1.72;color:var(--ink-2);font-weight:300;max-width:52ch}
+.pil-list{margin-top:1.6rem;display:flex;flex-direction:column;gap:.7rem}
+.pil-list div{display:flex;align-items:flex-start;gap:.65rem;font-size:.89rem;color:var(--ink-2);font-weight:400}
+.pil-list svg{width:16px;height:16px;flex-shrink:0;margin-top:2px;stroke:var(--purple);fill:none;stroke-width:2}
+
+/* 01 · Certeza — lista de documentos con la cita normativa */
+.doc{display:flex;align-items:center;gap:.6rem;padding:.62rem .8rem;border:1px solid var(--line);border-radius:9px;background:#fff;opacity:0;transform:translateY(6px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.pnl.on .doc{opacity:1;transform:none}
+.pnl.on .doc.a{transition-delay:.12s}
+.pnl.on .doc.b{transition-delay:.34s}
+.pnl.on .doc.c{transition-delay:1.35s}
+.doc .fn{flex:1;font-family:var(--mono);font-size:.71rem;color:var(--ink-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.doc .pill{font-size:.57rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:3px 7px;border-radius:100px;white-space:nowrap}
+.pill.ok{background:rgba(5,150,105,.1);color:#047857}
+.pill.warn{background:rgba(180,83,9,.11);color:#B45309}
+.doc.hit{border-color:rgba(180,83,9,.32);background:#FFFCF7}
+.cite{margin-left:1.5rem;border-left:2px solid rgba(180,83,9,.3);max-height:0;opacity:0;overflow:hidden;padding:0 .9rem;transition:max-height .55s var(--ease) .8s,opacity .5s var(--ease) .8s,padding .55s var(--ease) .8s}
+.pnl.on .cite{max-height:120px;opacity:1;padding:.7rem .9rem}
+.cite-t{font-size:.78rem;color:var(--ink);line-height:1.5;margin-bottom:.5rem}
+.cite-s{display:inline-flex;align-items:center;gap:.4rem;font-size:.63rem;font-family:var(--mono);color:var(--purple);background:rgba(144,58,164,.07);border:1px solid rgba(144,58,164,.2);padding:3px 8px;border-radius:5px}
+.cite-s svg{width:11px;height:11px;stroke:var(--purple);fill:none;stroke-width:1.8}
+
+/* 02 · Rapidez — comparativa de tiempos */
+.cmp{display:flex;flex-direction:column;gap:1.25rem}
+.cmp-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.45rem}
+.cmp-top b{font-size:.78rem;font-weight:500;color:var(--ink-2)}
+.cmp-top span{font-family:var(--mono);font-size:.72rem;color:var(--ink-3)}
+.cmp-bar{height:8px;border-radius:100px;background:#F1F0EF;overflow:hidden}
+.cmp-bar i{display:block;height:100%;width:0;border-radius:100px;transition:width 1.25s var(--ease) .3s}
+.cmp-bar i.slow{background:var(--line-2)}
+.cmp-bar i.fast{background:linear-gradient(90deg,var(--purple-mid),var(--purple-vivid))}
+.pnl.on .cmp-bar i.slow{width:100%}
+.pnl.on .cmp-bar i.fast{width:7%}
+.cmp-big{margin-top:1.9rem;font-size:clamp(2rem,3.4vw,2.6rem);font-weight:300;letter-spacing:-.05em;color:var(--ink);display:flex;align-items:baseline;gap:.55rem}
+.cmp-big em{font-style:normal;font-size:.85rem;font-weight:400;color:var(--ink-3);letter-spacing:-.01em}
+
+/* 03 · Seguridad — carga, procesamiento y almacenamiento */
+.shd-lock{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(144,58,164,.07);border:1px solid rgba(144,58,164,.2);margin:0 auto 1.4rem}
+.shd-lock svg{width:20px;height:20px;stroke:var(--purple);fill:none;stroke-width:1.7}
+.shd{display:flex;flex-direction:column;gap:.55rem}
+.shd-row{display:flex;align-items:center;gap:.7rem;padding:.7rem .85rem;border:1px solid var(--line);border-radius:9px;background:#fff;opacity:0;transform:translateY(6px);transition:opacity .5s var(--ease),transform .5s var(--ease),border-color .5s var(--ease),background .5s var(--ease)}
+.pnl.on .shd-row{opacity:1;transform:none;border-color:rgba(144,58,164,.22);background:rgba(144,58,164,.035)}
+.pnl.on .shd-row.a{transition-delay:.18s}
+.pnl.on .shd-row.b{transition-delay:.42s}
+.pnl.on .shd-row.c{transition-delay:.66s}
+.shd-row svg{width:15px;height:15px;stroke:var(--purple);fill:none;stroke-width:1.7;flex-shrink:0}
+.shd-row b{flex:1;font-size:.82rem;font-weight:500;color:var(--ink)}
+.shd-row span{font-size:.59rem;font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--purple)}
+
+.pil-proof{margin-top:6rem}
+.cap.stack .cap-list{flex-direction:row;flex-wrap:wrap;gap:.8rem 2rem}
+
+/* ============================================================
+   PIPELINE ASINCRONO
+   ============================================================ */
+.flow{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.steps{display:flex;flex-direction:column;position:relative}
+.steps::before{content:'';position:absolute;left:15px;top:22px;bottom:22px;width:1px;background:linear-gradient(to bottom,var(--purple) 0%,var(--lavender-soft) 100%)}
+.step{display:flex;gap:1.3rem;padding-bottom:2.3rem;position:relative}
+.step:last-child{padding-bottom:0}
+.step-n{flex-shrink:0;width:31px;height:31px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:700;background:#fff;border:1px solid var(--line-2);color:var(--purple);z-index:1}
+.step-b h3{font-size:1rem;font-weight:600;letter-spacing:-.022em;margin-bottom:.45rem;display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;color:var(--ink)}
+.step-b p{font-size:.9rem;line-height:1.68;color:var(--ink-2);font-weight:300;max-width:46ch}
+
+/* ============================================================
+   ILUSTRACION DEL WORKFLOW — las tres etapas, dibujadas
+   ============================================================ */
+.wf{position:sticky;top:6.5rem;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 2px 4px rgba(10,10,10,.03),0 20px 48px -16px rgba(10,10,10,.12)}
+.wf-head{padding:.85rem 1.15rem;border-bottom:1px solid var(--line);background:#FCFCFB}
+.wf-t{font-size:.67rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
+.wf-body{padding:1.5rem 1.35rem;display:flex;flex-direction:column;position:relative}
+/* riel que enhebra las tres etapas */
+.wf-body::before{content:'';position:absolute;left:calc(1.35rem + 15px);top:2.1rem;bottom:2.1rem;width:1px;background:linear-gradient(to bottom,var(--purple),var(--lavender-soft))}
+.wf-stage{display:flex;gap:1rem;padding-bottom:1.4rem;position:relative}
+.wf-stage:last-child{padding-bottom:0}
+.wf-n{flex-shrink:0;width:31px;height:31px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.66rem;font-weight:700;background:#fff;border:1px solid var(--line-2);color:var(--purple);z-index:1}
+.wf-box{flex:1;min-width:0;border:1px solid var(--line);border-radius:10px;background:#FCFCFB;padding:.85rem .9rem}
+.wf-cap{font-size:.63rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-4);margin-bottom:.75rem}
+
+/* 01 — documentos sueltos que se ordenan en modulos CTD */
+.wf-row{display:flex;align-items:center;gap:.6rem}
+.wf-loose{display:flex;gap:3px;flex-shrink:0}
+.wf-loose i{width:13px;height:17px;border-radius:2px;border:1px solid var(--line-2);background:#fff;display:block;transition:transform .6s var(--ease)}
+.wf-loose i:nth-child(1){transform:rotate(-11deg)}
+.wf-loose i:nth-child(2){transform:rotate(7deg)}
+.wf-loose i:nth-child(3){transform:rotate(-5deg)}
+.wf-loose i:nth-child(4){transform:rotate(12deg)}
+.wf-loose i:nth-child(5){transform:rotate(-8deg)}
+.wf.on .wf-loose i{transform:rotate(0)}
+.wf-arr{width:17px;height:17px;flex-shrink:0;color:var(--ink-4)}
+.wf-mods{display:flex;gap:3px;flex:1;min-width:0}
+.wf-mods span{flex:1;text-align:center;font-family:var(--mono);font-size:.55rem;letter-spacing:.02em;color:var(--purple);background:rgba(144,58,164,.07);border:1px solid rgba(144,58,164,.18);border-radius:3px;padding:4px 0;opacity:0;transform:translateY(4px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
+.wf.on .wf-mods span{opacity:1;transform:none}
+.wf.on .wf-mods span:nth-child(1){transition-delay:.45s}
+.wf.on .wf-mods span:nth-child(2){transition-delay:.55s}
+.wf.on .wf-mods span:nth-child(3){transition-delay:.65s}
+.wf.on .wf-mods span:nth-child(4){transition-delay:.75s}
+.wf.on .wf-mods span:nth-child(5){transition-delay:.85s}
+
+/* 02 — las dos revisiones */
+.wf-chk{display:flex;align-items:center;gap:.55rem;padding:.5rem .6rem;border:1px solid var(--line);border-radius:8px;background:#fff;flex-wrap:wrap}
+.wf-chk + .wf-chk{margin-top:.45rem}
+.wf-chk .tick{width:17px;height:17px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:#F1F0EF;color:#fff;transition:background .45s var(--ease)}
+.wf-chk .tick svg{width:9px;height:9px;opacity:0;transition:opacity .35s var(--ease)}
+.wf.on .wf-chk .tick{background:#047857}
+.wf.on .wf-chk .tick svg{opacity:1}
+.wf.on .wf-chk.k1 .tick,.wf.on .wf-chk.k1 .tick svg{transition-delay:1.05s}
+.wf.on .wf-chk.k2 .tick,.wf.on .wf-chk.k2 .tick svg{transition-delay:1.45s}
+.wf-chk b{font-size:.76rem;font-weight:600;color:var(--ink)}
+.wf-chk em{font-style:normal;font-size:.66rem;color:var(--ink-4)}
+
+/* 03 — hallazgos por criticidad, con su cita */
+.wf-find{display:flex;align-items:center;gap:.5rem;padding:.5rem .6rem;border:1px solid var(--line);border-radius:8px;background:#fff;opacity:0;transform:translateX(-6px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
+.wf-find + .wf-find{margin-top:.4rem}
+.wf.on .wf-find{opacity:1;transform:none}
+.wf.on .wf-find.f1{transition-delay:1.8s}
+.wf.on .wf-find.f2{transition-delay:1.95s}
+.wf.on .wf-find.f3{transition-delay:2.1s}
+.wf-find .sev{font-size:.55rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:3px 6px;border-radius:4px;flex-shrink:0}
+.sev.crit{background:rgba(185,28,28,.09);color:#B91C1C}
+.sev.maj{background:rgba(180,83,9,.1);color:#B45309}
+.sev.min{background:#F4F4F5;color:var(--ink-3)}
+.wf-find b{flex:1;min-width:0;font-size:.73rem;font-weight:500;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.wf-find em{font-style:normal;font-family:var(--mono);font-size:.6rem;color:var(--purple);flex-shrink:0}
+
+/* ============================================================
+   COBERTURA
+   ============================================================ */
+.flags{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.flag{padding:2.6rem 1.4rem;text-align:center;border-left:1px solid var(--line);transition:background .35s}
+.flag:first-child{border-left:none}
+.flag:hover{background:#fff}
+/* Codigo ISO tipografico en vez de emoji de bandera: Windows no dibuja los
+   pares de indicadores regionales y los mostraba como dos letras sueltas. */
+.flag .cc{font-size:1.5rem;line-height:1;font-weight:200;letter-spacing:.12em;color:var(--ink-4);margin-bottom:1.1rem;transition:color .35s}
+.flag:hover .cc{color:var(--purple)}
+.flag .cn{font-size:1rem;font-weight:600;letter-spacing:-.02em;color:var(--ink)}
+.flag .ca{font-size:.71rem;color:var(--purple);margin-top:.35rem;letter-spacing:.11em;font-weight:600}
+
+/* ============================================================
+   CTA + FORMULARIO
+   ============================================================ */
+.form-card{max-width:500px;margin:3rem auto 0;padding:2.3rem;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 2px 4px rgba(10,10,10,.03),0 20px 50px -18px rgba(10,10,10,.14)}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+.wi{width:100%;padding:13px 15px;background:#FCFCFB;border:1px solid var(--line-2);border-radius:9px;color:var(--ink);font-family:var(--f);font-size:.89rem;margin-bottom:.7rem;transition:border-color .25s,background .25s,box-shadow .25s}
+.wi::placeholder{color:var(--ink-4)}
+.wi:focus{outline:none;border-color:var(--purple);background:#fff;box-shadow:0 0 0 3px rgba(144,58,164,.1)}
+.wb{width:100%;padding:14px;background:var(--purple);color:#fff;border:none;border-radius:100px;font-family:var(--f);font-size:.92rem;font-weight:600;cursor:pointer;transition:all .3s var(--ease);margin-top:.5rem}
+.wb:hover:not(:disabled){background:var(--purple-mid);box-shadow:0 10px 28px rgba(95,38,108,.24)}
+.wb:disabled{opacity:.7;cursor:wait}
+.form-fine{margin-top:1.1rem;font-size:.72rem;line-height:1.6;color:var(--ink-4);text-align:center;font-weight:300}
+.cta-email{margin-top:2rem;font-size:.9rem;color:var(--ink-2);text-align:center;font-weight:300}
+.cta-email a{color:var(--purple);text-decoration:none;border-bottom:1px solid rgba(144,58,164,.3)}
+.cta-email a:hover{color:var(--purple-mid);border-bottom-color:var(--purple-mid)}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.foot{padding:3.2rem 0;border-top:1px solid var(--line);background:var(--bg)}
+.footi{max-width:1320px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
+.foot-l{display:flex;align-items:center;gap:1.7rem;flex-wrap:wrap}
+.foot-l img{height:21px;opacity:.7}
+.foot-l a{color:var(--ink-2);font-size:.83rem;text-decoration:none;transition:color .25s;font-weight:400}
+.foot-l a:hover{color:var(--purple)}
+.foot-r{font-size:.76rem;color:var(--ink-4);font-weight:400}
+
+/* ============================================================
+   LIGHTBOX
+   ============================================================ */
+#imgLB{display:none;position:fixed;inset:0;z-index:900;background:rgba(250,250,249,.94);cursor:zoom-out;justify-content:center;align-items:center;padding:2rem;backdrop-filter:blur(8px)}
+#imgLB img{max-width:94vw;max-height:92vh;border-radius:12px;border:1px solid var(--line);box-shadow:0 30px 80px rgba(10,10,10,.22)}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media(max-width:1100px){ .nk{gap:1.3rem} .nk a{font-size:.75rem} }
+@media(max-width:960px){
+  .flow{grid-template-columns:1fr;gap:3rem}
+  .wf{position:static}
+  /* El escenario se queda fijo arriba y el texto corre debajo.
+     display:block (y no grid) es lo que le da recorrido al sticky: dentro de
+     una grilla con align-items:start su area mide lo mismo que el, y no pega. */
+  .pil{display:block}
+  .pil-stage{position:sticky;top:56px;z-index:5;background:var(--bg-alt);padding:.85rem 0 1rem;border-bottom:1px solid var(--line);margin-bottom:1.6rem}
+  .pil-card{aspect-ratio:16/10.5}
+  .pnl{padding:1.35rem;gap:.42rem}
+  .pil-dots{margin-top:1rem}
+  .pil-item{padding:2.8rem 0 2.8rem 1.3rem}
+  .pil-proof{margin-top:3.5rem}
+  .cols-3{grid-template-columns:1fr;gap:2.4rem}
+  .metrics{grid-template-columns:repeat(2,1fr);gap:2.5rem 0}
+  .met:nth-child(3){border-left:none}
+  .flags{grid-template-columns:repeat(2,1fr)}
+  .flag:nth-child(3){border-left:none}
+  .flag:nth-child(n+3){border-top:1px solid var(--line)}
+  .sec{padding:5.5rem 0}
+  .sec-head{margin-bottom:3.2rem}
+}
+@media(max-width:820px){
+  /* En telefono se aligera el fondo: las facetas no se leen a este ancho y
+     un blur grande animado castiga a los equipos de gama baja. */
+  .shard{display:none}
+  .aur{filter:blur(44px)}
+  .hero-mark{width:68vw;opacity:.025}
+  .wrap,.wrap-wide,.ni,.footi{padding-left:1.4rem;padding-right:1.4rem}
+  .hb{display:flex}
+  .ni{grid-template-columns:auto 1fr auto}
+  .nk{position:absolute;top:calc(100% + .75rem);left:0;right:0;display:none;flex-direction:column;align-items:stretch;gap:0;background:rgba(255,255,255,.98);backdrop-filter:blur(18px);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:.4rem 0}
+  .nk.open{display:flex}
+  .nk a{padding:.9rem 1.4rem;font-size:.9rem}
+  .hero{padding:7.5rem 0 4rem}
+  .agencies{gap:1.6rem}
+  .agency{font-size:.8rem}
+  .frow{grid-template-columns:1fr}
+  .footi{flex-direction:column;align-items:flex-start}
+  .stage{padding-bottom:4.5rem}
+}
+@media(max-width:560px){
+  /* En pantallas angostas el hallazgo se parte en dos lineas en vez de
+     truncarse: un hallazgo cortado no comunica nada. */
+  .wf-find b{white-space:normal;overflow:visible;text-overflow:clip;line-height:1.35}
+  .wf-find{align-items:flex-start}
+  .wf-find .sev,.wf-find em{margin-top:1px}
+  .nav-right{gap:.45rem}
+  .nc{padding:8px 14px;font-size:.71rem}
+  .nl img{height:25px}
+  .metrics{grid-template-columns:1fr;gap:2.2rem}
+  .met{border-left:none}
+  .flags{grid-template-columns:1fr}
+  .flag{border-left:none}
+  .flag:nth-child(n+2){border-top:1px solid var(--line)}
+  .hero-cta{flex-direction:column;width:100%}
+  .hero-cta .btn{width:100%}
+  .form-card{padding:1.6rem}
+}
+/* Pantallas bajas (laptops 1366x768): que el hero quepa en una sola vista */
+@media(min-width:820px) and (max-height:820px){
+  .hero{padding:7.5rem 0 2.5rem}
+  .eyebrow{margin-bottom:1.7rem}
+  .hero-sub{margin-bottom:2.2rem}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important}
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link" data-en="Skip to content" data-es="Saltar al contenido">Saltar al contenido</a>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav"><div class="ni">
+  <div class="nk" id="navlinks">
+    <a href="#producto" data-en="Product" data-es="Producto">Producto</a>
+    <a href="#proceso" data-en="How it works" data-es="C&#243;mo funciona">C&#243;mo funciona</a>
+    <a href="#cobertura" data-en="Coverage" data-es="Cobertura">Cobertura</a>
+  </div>
+  <a href="#" class="nl" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'})"><img src="assets/logo-ink.png" alt="Umplia" width="909" height="604"></a>
+  <div class="nav-right">
+    <button class="hb" type="button" aria-label="Men&#250;" aria-expanded="false" onclick="toggleNav(this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    <a href="#acceso" class="nc" data-en="Book a demo" data-es="Agendar demo">Agendar demo</a>
+    <div class="lt" role="group" aria-label="Idioma / Language"><button class="lb active" id="bes" type="button" aria-pressed="true" onclick="setL('es')">ES</button><button class="lb" id="ben" type="button" aria-pressed="false" onclick="setL('en')">EN</button></div>
+  </div>
+</div></nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="main">
+  <div class="hero-bg" aria-hidden="true">
+    <span class="aur a1"></span>
+    <span class="aur a2"></span>
+    <span class="aur a3"></span>
+    <span class="shard s1"></span>
+    <span class="shard s2"></span>
+    <img class="hero-mark" src="assets/mark.png" alt="" width="377" height="604" decoding="async">
+  </div>
+  <div class="wrap">
+    <div class="eyebrow">Dossier Intelligence Platform</div>
+    <h1><span data-en="Filing a dossier" data-es="Radicar un dossier">Radicar un dossier</span> <em data-en="doesn&#39;t have to be an act of faith" data-es="no tiene que ser un acto de fe">no tiene que ser un acto de fe</em></h1>
+    <p class="hero-sub" data-en="With Umplia the weeks lost reviewing dossiers page by page disappear &#8212; along with the errors that slip through unnoticed and the deficiency letters that push back your product&#39;s launch." data-es="Con Umplia desaparecen las semanas perdidas revisando dossieres p&#225;gina por p&#225;gina, los errores que pasan desapercibidos y los requerimientos que aplazan la salida al mercado de tu producto.">Con Umplia desaparecen las semanas perdidas revisando dossieres p&#225;gina por p&#225;gina, los errores que pasan desapercibidos y los requerimientos que aplazan la salida al mercado de tu producto.</p>
+    <div class="hero-cta">
+      <a href="#acceso" class="btn btn-primary" data-en="Book a demo" data-es="Agendar demo">Agendar demo</a>
+      <a href="#proceso" class="btn-text"><span data-en="See how it works" data-es="Ver c&#243;mo funciona">Ver c&#243;mo funciona</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EL PRODUCTO EN ESCENA ============ -->
+<section class="stage">
+  <div class="wrap-wide stage-inner">
+    <div class="shot rv">
+      <div class="shot-bar"><i></i><i></i><i></i><em class="u">app.umplia.com &#8212; DOS-2026-256 &#183; Formato CTD</em></div>
+      <img src="assets/workspace.jpg" alt="Umplia Workspace" loading="lazy" width="1889" height="847" onclick="openLB(this.src)">
+    </div>
+    <div class="stage-cap rv d1" data-en="The Umplia workspace. Click to enlarge." data-es="El workspace de Umplia. Clic para ampliar.">El workspace de Umplia. Clic para ampliar.</div>
+  </div>
+</section>
+
+<!-- ============ AGENCIAS ============ -->
+<section style="padding:0 0 7rem">
+  <div class="wrap">
+    <div class="agencies rv">
+      <div class="agencies-label" data-en="Built for the requirements of" data-es="Construido para los requisitos de">Construido para los requisitos de</div>
+      <div class="agency">INVIMA</div>
+      <div class="agency">COFEPRIS</div>
+      <div class="agency">ANMAT</div>
+      <div class="agency">ISP</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DECLARACION + METRICAS ============ -->
+<section class="sec alt hair">
+  <div class="wrap">
+    <div class="sec-head wide rv">
+      <h2 class="sec-title" data-en="The first dossier intelligence platform for the pharmaceutical industry in LATAM" data-es="La primera plataforma de inteligencia de dossieres para la industria farmac&#233;utica en LATAM">La primera plataforma de inteligencia de dossieres para la industria farmac&#233;utica en LATAM</h2>
+      <p class="sec-sub" data-en="It is not a document manager with AI. It is a regulatory affairs assistant that reads the dossier, understands the regulation, and tells your regulatory affairs team exactly what errors the dossier contains." data-es="No es un gestor documental con IA. Es un asistente de asuntos regulatorios que lee el dossier, entiende la norma y le dice a tu equipo de asuntos regulatorios exactamente qu&#233; errores existen en el dossier.">No es un gestor documental con IA. Es un asistente de asuntos regulatorios que lee el dossier, entiende la norma y le dice a tu equipo de asuntos regulatorios exactamente qu&#233; errores existen en el dossier.</p>
+    </div>
+    <div class="metrics rv d1">
+      <div class="met"><div class="n">90<span>%</span></div><div class="l" data-en="Fewer submission errors" data-es="Menos errores de radicaci&#243;n">Menos errores de radicaci&#243;n</div></div>
+      <div class="met"><div class="n">~35 <span>min</span></div><div class="l" data-en="Full dossier analysis" data-es="An&#225;lisis completo del dossier">An&#225;lisis completo del dossier</div></div>
+      <div class="met"><div class="n">12<span>x</span></div><div class="l" data-en="Faster reviews" data-es="Revisi&#243;n m&#225;s r&#225;pida">Revisi&#243;n m&#225;s r&#225;pida</div></div>
+      <div class="met"><div class="n">4</div><div class="l" data-en="LATAM agencies covered" data-es="Agencias LATAM cubiertas">Agencias LATAM cubiertas</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EL PROBLEMA ============ -->
+<section class="sec" id="problema">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-label" data-en="The Problem" data-es="El Problema">El Problema</span>
+      <h2 class="sec-title" data-en="Submissions in LATAM are broken." data-es="Las radicaciones en LATAM est&#225;n rotas.">Las radicaciones en LATAM est&#225;n rotas.</h2>
+    </div>
+    <div class="cols-3">
+      <div class="col rv"><div class="rule"></div><h3 data-en="3+ weeks of manual review" data-es="3+ semanas de revisi&#243;n manual">3+ semanas de revisi&#243;n manual</h3><p data-en="Regulatory affairs teams spend weeks verifying the compliance of every single document in the dossier." data-es="Los equipos de Asuntos Regulatorios pasan semanas verificando el cumplimiento de cada documento del dossier.">Los equipos de Asuntos Regulatorios pasan semanas verificando el cumplimiento de cada documento del dossier.</p></div>
+      <div class="col rv d1"><div class="rule"></div><h3 data-en="Delays of up to 6 months" data-es="Demoras de hasta 6 meses">Demoras de hasta 6 meses</h3><p data-en="One error or one missing document before the agency, and the approval process is pushed back by up to six months." data-es="Un error o un documento faltante ante la entidad regulatoria y el proceso de aprobaci&#243;n se retrasa hasta seis meses.">Un error o un documento faltante ante la entidad regulatoria y el proceso de aprobaci&#243;n se retrasa hasta seis meses.</p></div>
+      <div class="col rv d2"><div class="rule"></div><h3 data-en="Zero tools built for regulatory affairs" data-es="Cero herramientas para Asuntos Regulatorios">Cero herramientas para Asuntos Regulatorios</h3><p data-en="Regulatory professionals are trapped between endless PDFs and spreadsheets that never stop multiplying." data-es="Los profesionales de Asuntos Regulatorios viven atrapados entre PDFs interminables y hojas de c&#225;lculo que nunca dejan de multiplicarse.">Los profesionales de Asuntos Regulatorios viven atrapados entre PDFs interminables y hojas de c&#225;lculo que nunca dejan de multiplicarse.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EL PRODUCTO — tres pilares ============ -->
+<section class="sec alt hair" id="producto">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-label" data-en="The Product" data-es="El Producto">El Producto</span>
+      <h2 class="sec-title" data-en="Three pillars. One platform." data-es="Tres pilares. Una plataforma.">Tres pilares. Una plataforma.</h2>
+    </div>
+
+    <div class="pil">
+      <!-- Escenario ilustrativo: cambia con el pilar activo -->
+      <div class="pil-stage rv" aria-hidden="true">
+        <div class="pil-card">
+
+          <!-- 01 · Certeza Regulatoria -->
+          <div class="pnl on" data-p="1">
+            <div class="pnl-h" data-en="Validation &#183; DOS-2026-256" data-es="Validaci&#243;n &#183; DOS-2026-256">Validaci&#243;n &#183; DOS-2026-256</div>
+            <div class="doc a"><span class="fn">formula_cualitativa.pdf</span><span class="pill ok" data-en="Compliant" data-es="Conforme">Conforme</span></div>
+            <div class="doc b hit"><span class="fn">estabilidad_acelerada.pdf</span><span class="pill warn" data-en="1 finding" data-es="1 hallazgo">1 hallazgo</span></div>
+            <div class="cite">
+              <div class="cite-t" data-en="The accelerated stability study is missing." data-es="Falta el estudio de estabilidad acelerada.">Falta el estudio de estabilidad acelerada.</div>
+              <span class="cite-s">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+                ICH Q1A(R2)
+              </span>
+            </div>
+            <div class="doc c"><span class="fn">certificado_bpm.pdf</span><span class="pill ok" data-en="Compliant" data-es="Conforme">Conforme</span></div>
+          </div>
+
+          <!-- 02 · Rapidez de Validacion -->
+          <div class="pnl" data-p="2">
+            <div class="pnl-h" data-en="Review time" data-es="Tiempo de revisi&#243;n">Tiempo de revisi&#243;n</div>
+            <div class="cmp">
+              <div class="cmp-row">
+                <div class="cmp-top"><b data-en="Manual review" data-es="Revisi&#243;n manual">Revisi&#243;n manual</b><span data-en="Weeks" data-es="Semanas">Semanas</span></div>
+                <div class="cmp-bar"><i class="slow"></i></div>
+              </div>
+              <div class="cmp-row">
+                <div class="cmp-top"><b>Umplia</b><span data-en="Minutes" data-es="Minutos">Minutos</span></div>
+                <div class="cmp-bar"><i class="fast"></i></div>
+              </div>
+            </div>
+            <div class="cmp-big">12<span>x</span><em data-en="faster" data-es="m&#225;s r&#225;pido">m&#225;s r&#225;pido</em></div>
+          </div>
+
+          <!-- 03 · Seguridad de la Informacion -->
+          <div class="pnl" data-p="3">
+            <div class="pnl-h" data-en="Dossier protection" data-es="Protecci&#243;n del dossier">Protecci&#243;n del dossier</div>
+            <div class="shd-lock"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 118 0v3"/></svg></div>
+            <div class="shd">
+              <div class="shd-row a"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 20h16"/></svg><b data-en="Upload" data-es="Carga">Carga</b><span data-en="encrypted" data-es="cifrada">cifrada</span></div>
+              <div class="shd-row b"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/></svg><b data-en="Processing" data-es="Procesamiento">Procesamiento</b><span data-en="isolated" data-es="aislado">aislado</span></div>
+              <div class="shd-row c"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg><b data-en="Storage" data-es="Almacenamiento">Almacenamiento</b><span data-en="encrypted" data-es="cifrado">cifrado</span></div>
+            </div>
+          </div>
+
+        </div>
+        <div class="pil-dots">
+          <span class="pil-dot on" data-p="1"></span><span class="pil-dot" data-p="2"></span><span class="pil-dot" data-p="3"></span>
+        </div>
+      </div>
+
+      <!-- Texto de los pilares -->
+      <div class="pil-text">
+
+        <article class="pil-item on rv" data-p="1">
+          <div class="pil-num">01</div>
+          <h3 data-en="Regulatory Certainty" data-es="Certeza Regulatoria">Certeza Regulatoria</h3>
+          <div class="pil-tag" data-en="Precise, traceable validation grounded in current regulation." data-es="Validaci&#243;n precisa, trazable y sustentada en la regulaci&#243;n vigente.">Validaci&#243;n precisa, trazable y sustentada en la regulaci&#243;n vigente.</div>
+          <p data-en="Regulation leaves no room for ambiguous interpretation. Umplia validates every document against local and international requirements and cites the regulation behind every finding. Your team never acts blind: every finding is grounded in the regulation so they can verify it with complete clarity." data-es="La regulaci&#243;n no admite interpretaciones ambiguas. Umplia valida cada documento contra los requisitos locales e internacionales y cita la regulaci&#243;n que respalda cada hallazgo. Tu equipo no act&#250;a a ciegas: cada hallazgo viene sustentado en la regulaci&#243;n para que puedan verificarlo con total claridad.">La regulaci&#243;n no admite interpretaciones ambiguas. Umplia valida cada documento contra los requisitos locales e internacionales y cita la regulaci&#243;n que respalda cada hallazgo. Tu equipo no act&#250;a a ciegas: cada hallazgo viene sustentado en la regulaci&#243;n para que puedan verificarlo con total claridad.</p>
+          <div class="pil-list">
+            <div><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span data-en="Findings grounded in regulation" data-es="Hallazgos sustentados en regulaci&#243;n">Hallazgos sustentados en regulaci&#243;n</span></div>
+            <div><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span data-en="Clear requirements: what is missing and where" data-es="Requisitos claros: qu&#233; falta y d&#243;nde">Requisitos claros: qu&#233; falta y d&#243;nde</span></div>
+            <div><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span data-en="Verifiable certainty before filing" data-es="Certeza verificable antes de radicar">Certeza verificable antes de radicar</span></div>
+          </div>
+        </article>
+
+        <article class="pil-item rv" data-p="2">
+          <div class="pil-num">02</div>
+          <h3 data-en="Validation Speed" data-es="Rapidez de Validaci&#243;n">Rapidez de Validaci&#243;n</h3>
+          <div class="pil-tag" data-en="From weeks to minutes." data-es="De semanas a minutos.">De semanas a minutos.</div>
+          <p data-en="Manual page-by-page review is slow, expensive and error-prone. Umplia accelerates the entire process, from reading the dossier to validating compliance. What used to take weeks now happens in minutes, keeping your product launch on schedule." data-es="La revisi&#243;n manual p&#225;gina por p&#225;gina es lenta, costosa y propensa a errores. Umplia acelera el proceso completo: desde la lectura del dossier hasta la validaci&#243;n de cumplimiento. Lo que antes tomaba semanas, ahora ocurre en minutos, asegurando que el lanzamiento del producto llegue a tiempo.">La revisi&#243;n manual p&#225;gina por p&#225;gina es lenta, costosa y propensa a errores. Umplia acelera el proceso completo: desde la lectura del dossier hasta la validaci&#243;n de cumplimiento. Lo que antes tomaba semanas, ahora ocurre en minutos, asegurando que el lanzamiento del producto llegue a tiempo.</p>
+          <div class="pil-list">
+            <div><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span data-en="Automatic dossier validation" data-es="Validaci&#243;n autom&#225;tica del dossier">Validaci&#243;n autom&#225;tica del dossier</span></div>
+            <div><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span data-en="An accelerated flow with no repetitive work" data-es="Flujo acelerado sin trabajo repetitivo">Flujo acelerado sin trabajo repetitivo</span></div>
+            <div><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span data-en="Product launch on time" data-es="Lanzamiento del producto a tiempo">Lanzamiento del producto a tiempo</span></div>
+          </div>
+        </article>
+
+        <article class="pil-item rv" data-p="3">
+          <div class="pil-num">03</div>
+          <h3 data-en="Information Security" data-es="Seguridad de la Informaci&#243;n">Seguridad de la Informaci&#243;n</h3>
+          <div class="pil-tag" data-en="Full protection for sensitive content." data-es="Protecci&#243;n total del contenido sensible.">Protecci&#243;n total del contenido sensible.</div>
+          <p data-en="Dossiers contain critical data. Umplia operates to security standards that keep your information protected at every moment: upload, processing and storage. Privacy and control, with no compromises." data-es="Los dossieres contienen datos cr&#237;ticos. Umplia opera con est&#225;ndares de seguridad que garantizan que tu informaci&#243;n est&#233; protegida en todo momento: en carga, procesamiento y almacenamiento. Privacidad y control sin compromisos.">Los dossieres contienen datos cr&#237;ticos. Umplia opera con est&#225;ndares de seguridad que garantizan que tu informaci&#243;n est&#233; protegida en todo momento: en carga, procesamiento y almacenamiento. Privacidad y control sin compromisos.</p>
+          <div class="pil-list">
+            <div><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span data-en="Secure handling of sensitive documents" data-es="Manejo seguro de documentos sensibles">Manejo seguro de documentos sensibles</span></div>
+            <div><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span data-en="Strict access controls" data-es="Controles estrictos de acceso">Controles estrictos de acceso</span></div>
+            <div><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span data-en="Infrastructure designed for confidentiality" data-es="Infraestructura dise&#241;ada para confidencialidad">Infraestructura dise&#241;ada para confidencialidad</span></div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- Los tres pilares, juntos, sobre un expediente real -->
+    <div class="pil-proof rv">
+      <div class="shot">
+        <div class="shot-bar"><i></i><i></i><i></i><em class="u">app.umplia.com &#8212; JOB-9243A386</em></div>
+        <img src="assets/umplia-reporte.png" alt="An&#225;lisis terminado en Umplia, con los documentos por corregir y el reporte de hallazgos" loading="lazy" width="1919" height="946" onclick="openLB(this.src)">
+      </div>
+      <div class="stage-cap" data-en="A finished analysis: every document flagged, with its findings. Click to enlarge." data-es="Un an&#225;lisis terminado: cada documento marcado, con sus hallazgos. Clic para ampliar.">Un an&#225;lisis terminado: cada documento marcado, con sus hallazgos. Clic para ampliar.</div>
+    </div>
+  </div>
+</section>
+<!-- ============ COMO FUNCIONA (pipeline asincrono) ============ -->
+<section class="sec" id="proceso">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-label" data-en="How it works" data-es="C&#243;mo funciona">C&#243;mo funciona</span>
+      <h2 class="sec-title" data-en="Minutes instead of weeks" data-es="Minutos en vez de semanas">Minutos en vez de semanas</h2>
+    </div>
+
+    <div class="flow">
+      <div class="steps rv">
+        <div class="step">
+          <div class="step-n">01</div>
+          <div class="step-b">
+            <h3><span data-en="Upload the technical documents" data-es="Sube los documentos t&#233;cnicos">Sube los documentos t&#233;cnicos</span></h3>
+            <p data-en="Upload the files that make up the record. Umplia reads them and assembles the dossier in the correct format according to the product category for each country." data-es="Carga los archivos que conforman el expediente. Umplia los lee y arma el dossier en el formato correcto de acuerdo a la categor&#237;a del producto para cada pa&#237;s.">Carga los archivos que conforman el expediente. Umplia los lee y arma el dossier en el formato correcto de acuerdo a la categor&#237;a del producto para cada pa&#237;s.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-n">02</div>
+          <div class="step-b">
+            <h3><span data-en="The AI runs two reviews" data-es="La IA realiza dos revisiones">La IA realiza dos revisiones</span></h3>
+            <p data-en="First, it checks internal consistency across every document.<br>Then it validates externally against current regulation, guidelines, standards and pharmacopoeias." data-es="Primero, verifica la consistencia interna entre todos los documentos.<br>Luego, valida externamente contra la regulaci&#243;n vigente, gu&#237;as, est&#225;ndares y farmacopeas.">Primero, verifica la consistencia interna entre todos los documentos.<br>Luego, valida externamente contra la regulaci&#243;n vigente, gu&#237;as, est&#225;ndares y farmacopeas.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-n">03</div>
+          <div class="step-b">
+            <h3><span data-en="Compliance report" data-es="Informe de cumplimiento">Informe de cumplimiento</span></h3>
+            <p data-en="Findings in minutes, ranked by criticality and with traceable citations.<br>With a regulatory professional always in the loop." data-es="Hallazgos en minutos, ordenados por criticidad y con citas trazables.<br>Con un profesional regulatorio siempre al tanto.">Hallazgos en minutos, ordenados por criticidad y con citas trazables.<br>Con un profesional regulatorio siempre al tanto.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Ilustracion del flujo: las tres etapas del workflow de Umplia -->
+      <div class="wf rv d1" aria-hidden="true">
+        <div class="wf-head"><span class="wf-t">Umplia AI Workflow</span></div>
+        <div class="wf-body">
+
+          <!-- 01 · Sube los documentos tecnicos -->
+          <div class="wf-stage">
+            <div class="wf-n">01</div>
+            <div class="wf-box">
+              <div class="wf-cap" data-en="Records &#8594; CTD format" data-es="Expediente &#8594; formato CTD">Expediente &#8594; formato CTD</div>
+              <div class="wf-row">
+                <div class="wf-loose"><i></i><i></i><i></i><i></i><i></i></div>
+                <svg class="wf-arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h14M13 7l5 5-5 5"/></svg>
+                <div class="wf-mods"><span>M1</span><span>M2</span><span>M3</span><span>M4</span><span>M5</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 02 · La IA realiza dos revisiones -->
+          <div class="wf-stage">
+            <div class="wf-n">02</div>
+            <div class="wf-box">
+              <div class="wf-cap" data-en="Two reviews" data-es="Dos revisiones">Dos revisiones</div>
+              <div class="wf-chk k1">
+                <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+                <b data-en="Internal consistency" data-es="Consistencia interna">Consistencia interna</b>
+                <em data-en="across every document" data-es="entre todos los documentos">entre todos los documentos</em>
+              </div>
+              <div class="wf-chk k2">
+                <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+                <b data-en="External validation" data-es="Validaci&#243;n externa">Validaci&#243;n externa</b>
+                <em data-en="regulation &#183; guidelines &#183; pharmacopoeias" data-es="regulaci&#243;n &#183; gu&#237;as &#183; farmacopeas">regulaci&#243;n &#183; gu&#237;as &#183; farmacopeas</em>
+              </div>
+            </div>
+          </div>
+
+          <!-- 03 · Informe de cumplimiento -->
+          <div class="wf-stage">
+            <div class="wf-n">03</div>
+            <div class="wf-box">
+              <div class="wf-cap" data-en="Compliance report" data-es="Informe de cumplimiento">Informe de cumplimiento</div>
+              <div class="wf-find f1"><span class="sev crit" data-en="Critical" data-es="Cr&#237;tico">Cr&#237;tico</span><b data-en="Accelerated stability" data-es="Estabilidad acelerada">Estabilidad acelerada</b><em>ICH Q1A(R2)</em></div>
+              <div class="wf-find f2"><span class="sev maj" data-en="Major" data-es="Mayor">Mayor</span><b data-en="Method validation" data-es="Validaci&#243;n de m&#233;todo">Validaci&#243;n de m&#233;todo</b><em>ICH Q2(R2)</em></div>
+              <div class="wf-find f3"><span class="sev min" data-en="Minor" data-es="Menor">Menor</span><b data-en="Labeling" data-es="Etiquetado">Etiquetado</b><em>INVIMA</em></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COBERTURA ============ -->
+<section class="sec alt hair" id="cobertura">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-label" data-en="Coverage" data-es="Cobertura">Cobertura</span>
+      <h2 class="sec-title" data-en="Built for LATAM regulatory agencies." data-es="Construido para agencias regulatorias de LATAM.">Construido para agencias regulatorias de LATAM.</h2>
+      <p class="sec-sub" data-en="Tailored to the specific requirements of each regulatory authority." data-es="Adaptado a los requisitos espec&#237;ficos de cada autoridad regulatoria.">Adaptado a los requisitos espec&#237;ficos de cada autoridad regulatoria.</p>
+    </div>
+    <div class="flags rv d1">
+      <div class="flag"><div class="cc">CO</div><div class="cn">Colombia</div><div class="ca">INVIMA</div></div>
+      <div class="flag"><div class="cc">MX</div><div class="cn" data-en="Mexico" data-es="M&#233;xico">M&#233;xico</div><div class="ca">COFEPRIS</div></div>
+      <div class="flag"><div class="cc">AR</div><div class="cn">Argentina</div><div class="ca">ANMAT</div></div>
+      <div class="flag"><div class="cc">CL</div><div class="cn">Chile</div><div class="ca">ISP</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA / FORMULARIO ============ -->
+<section class="sec" id="acceso">
+  <div class="wrap">
+    <div class="sec-head rv" style="margin-bottom:0">
+      <span class="sec-label" data-en="Book a demo" data-es="Agendar demo">Agendar demo</span>
+      <h2 class="sec-title" data-en="Transform your regulatory operations." data-es="Transforme sus operaciones regulatorias.">Transforme sus operaciones regulatorias.</h2>
+      <p class="sec-sub" data-en="Tell us about your dossier portfolio and we will walk you through Umplia on a real case." data-es="Cu&#233;ntanos sobre tu portafolio de dossieres y te mostramos Umplia sobre un caso real.">Cu&#233;ntanos sobre tu portafolio de dossieres y te mostramos Umplia sobre un caso real.</p>
+    </div>
+
+    <form class="form-card rv d1" id="accessForm" novalidate>
+      <div class="frow">
+        <input type="text" class="wi" id="wln" name="nombre" autocomplete="given-name" aria-label="Nombre" placeholder="Nombre" data-placeholder-en="First name" data-placeholder-es="Nombre">
+        <input type="text" class="wi" id="wlla" name="apellido" autocomplete="family-name" aria-label="Apellido" placeholder="Apellido" data-placeholder-en="Last name" data-placeholder-es="Apellido">
+      </div>
+      <input type="text" class="wi" id="wlc" name="empresa" autocomplete="organization" aria-label="Empresa" placeholder="Empresa" data-placeholder-en="Company" data-placeholder-es="Empresa">
+      <input type="email" class="wi" id="wle" name="email" autocomplete="email" aria-label="Email corporativo" placeholder="Email corporativo" data-placeholder-en="Work email" data-placeholder-es="Email corporativo">
+      <input type="tel" class="wi" id="wlp" name="celular" autocomplete="tel" aria-label="Celular" placeholder="Celular" data-placeholder-en="Phone" data-placeholder-es="Celular">
+      <button type="submit" class="wb" data-en="Book a demo" data-es="Agendar demo">Agendar demo</button>
+      <div class="form-fine" data-en="We only use your details to contact you about Umplia. No dossier is ever uploaded from this form." data-es="Solo usamos tus datos para contactarte sobre Umplia. Desde este formulario nunca se sube ning&#250;n dossier.">Solo usamos tus datos para contactarte sobre Umplia. Desde este formulario nunca se sube ning&#250;n dossier.</div>
+    </form>
+    <div class="cta-email" id="ctaEmail"></div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot"><div class="footi">
+  <div class="foot-l">
+    <img src="assets/logo-ink.png" alt="Umplia">
+    <a id="footerEmail" href="#">info</a>
+    <a href="https://www.linkedin.com/company/umplia/" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+  <div class="foot-r">&#169; 2026 Umplia, Inc. &#183; Bogot&#225; &#183; Delaware</div>
+</div></footer>
+
+<div id="imgLB" onclick="this.style.display='none'"><img id="imgLBi" src="" alt="Zoom"></div>
+
+<script>
+/* ---------- i18n ---------- */
+var L='es';
+function setL(l){
+  L=l;
+  var ben=document.getElementById('ben'),bes=document.getElementById('bes');
+  ben.className=l==='en'?'lb active':'lb';
+  bes.className=l==='es'?'lb active':'lb';
+  ben.setAttribute('aria-pressed',l==='en');
+  bes.setAttribute('aria-pressed',l==='es');
+  document.documentElement.lang=l;
+  var all=document.querySelectorAll('[data-en]');
+  for(var i=0;i<all.length;i++){
+    var el=all[i],val=el.getAttribute('data-'+l);
+    if(!val) continue;
+    if(el.tagName==='INPUT') continue;
+    if(val.indexOf('<')!==-1){el.innerHTML=val}else{el.textContent=val}
+  }
+  var phs=document.querySelectorAll('[data-placeholder-en]');
+  for(var j=0;j<phs.length;j++){
+    var ph=phs[j].getAttribute('data-placeholder-'+l);
+    if(ph) phs[j].placeholder=ph;
+  }
+  renderEmail();
+}
+
+/* ---------- Nav ---------- */
+function toggleNav(btn){
+  var nk=document.getElementById('navlinks');
+  var open=nk.classList.toggle('open');
+  btn.setAttribute('aria-expanded',open?'true':'false');
+}
+window.addEventListener('scroll',function(){
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>18);
+},{passive:true});
+
+/* ---------- Reveal on scroll ---------- */
+(function(){
+  var els=document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)){
+    for(var i=0;i<els.length;i++) els[i].classList.add('v');
+    return;
+  }
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('v');io.unobserve(e.target)}
+    });
+  },{rootMargin:'0px 0px -8% 0px',threshold:.05});
+  for(var k=0;k<els.length;k++) io.observe(els[k]);
+})();
+
+/* ---------- Smooth anchors ---------- */
+(function(){
+  var links=document.querySelectorAll('a[href^="#"]:not(.skip-link)');
+  for(var k=0;k<links.length;k++){
+    links[k].addEventListener('click',function(e){
+      var h=this.getAttribute('href');
+      if(h==='#') return;
+      var t=document.querySelector(h);
+      if(!t) return;
+      e.preventDefault();
+      t.scrollIntoView({behavior:'smooth',block:'start'});
+      document.getElementById('navlinks').classList.remove('open');
+    });
+  }
+})();
+
+/* ---------- Tres pilares: el escenario sigue al pilar activo ---------- */
+(function(){
+  var items=document.querySelectorAll('.pil-item');
+  if(!items.length) return;
+  var pnls=document.querySelectorAll('.pnl'),
+      dots=document.querySelectorAll('.pil-dot'),
+      current='1';
+
+  function activate(p){
+    if(p===current) return;
+    current=p;
+    var i;
+    for(i=0;i<items.length;i++) items[i].classList.toggle('on',items[i].getAttribute('data-p')===p);
+    for(i=0;i<pnls.length;i++)  pnls[i].classList.toggle('on', pnls[i].getAttribute('data-p')===p);
+    for(i=0;i<dots.length;i++)  dots[i].classList.toggle('on', dots[i].getAttribute('data-p')===p);
+  }
+
+  if(!('IntersectionObserver' in window)) return;  /* se queda el pilar 01, ya marcado en el HTML */
+
+  /* Con estos margenes solo "intersecta" el pilar que cruza la franja central */
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting) activate(e.target.getAttribute('data-p'));
+    });
+  },{rootMargin:'-45% 0px -45% 0px',threshold:0});
+  for(var k=0;k<items.length;k++) io.observe(items[k]);
+})();
+
+/* ---------- Lightbox ---------- */
+function openLB(src){
+  document.getElementById('imgLBi').src=src;
+  document.getElementById('imgLB').style.display='flex';
+}
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape') document.getElementById('imgLB').style.display='none';
+});
+
+/* ---------- Ilustracion del workflow: arranca al entrar en pantalla ---------- */
+(function(){
+  var wf=document.querySelector('.wf');
+  if(!wf) return;
+  if(!('IntersectionObserver' in window)){wf.classList.add('on');return}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){wf.classList.add('on');io.unobserve(wf)}
+    });
+  },{threshold:.3});
+  io.observe(wf);
+})();
+
+/* ---------- Email (ofuscado) ---------- */
+var em='info'+'@'+'umplia'+'.com';
+function renderEmail(){
+  var ced=document.getElementById('ctaEmail');
+  if(ced) ced.innerHTML=(L==='en'?'Or write to us at ':'O escr&#237;benos a ')+'<a href="mail'+'to:'+em+'">'+em+'</a>';
+  var fem=document.getElementById('footerEmail');
+  if(fem){fem.href='mail'+'to:'+em;fem.textContent=em}
+}
+renderEmail();
+
+/* ---------- Formspree ---------- */
+var FREE_PROVIDERS=['gmail.com','googlemail.com','hotmail.com','hotmail.es','outlook.com','outlook.es','live.com','msn.com','yahoo.com','yahoo.es','yahoo.com.mx','yahoo.com.ar','yahoo.com.co','ymail.com','aol.com','icloud.com','me.com','mac.com','protonmail.com','proton.me','tutanota.com','tutanota.de','gmx.com','gmx.net','gmx.de','mail.com','zoho.com','yandex.com','yandex.ru','fastmail.com','hey.com','rocketmail.com','inbox.com','mail.ru','qq.com','163.com','126.com','foxmail.com','sina.com','duck.com','duckduckgo.com'];
+
+document.getElementById('accessForm').addEventListener('submit',function(ev){
+  ev.preventDefault();
+  var form=this;
+  var n=document.getElementById('wln').value.trim(),
+      la=document.getElementById('wlla').value.trim(),
+      c=document.getElementById('wlc').value.trim(),
+      e=document.getElementById('wle').value.trim(),
+      ph=document.getElementById('wlp').value.trim();
+
+  if(!n||!la){alert(L==='en'?'Enter your first and last name.':'Ingrese su nombre y apellido.');return}
+  if(!c){alert(L==='en'?'Enter your company.':'Ingrese su empresa.');return}
+  if(!e||e.indexOf('@')===-1){alert(L==='en'?'Enter a valid email.':'Ingrese un correo válido.');return}
+  if(FREE_PROVIDERS.indexOf(e.split('@')[1].toLowerCase())!==-1){alert(L==='en'?'Please use your work email.':'Por favor utilice su correo corporativo.');return}
+  if(!ph){alert(L==='en'?'Enter your phone number.':'Ingrese su número de celular.');return}
+
+  var b=form.querySelector('.wb');
+  var idle=function(){b.textContent=L==='en'?'Book a demo':'Agendar demo';b.style.background='';b.style.color=''};
+  b.textContent=L==='en'?'Sending...':'Enviando...';
+  b.disabled=true;
+
+  fetch('https://formspree.io/f/xdalqnkp',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({nombre:n,apellido:la,empresa:c,email:e,celular:ph,source:'umplia.com landing page'})
+  }).then(function(r){
+    if(r.ok){
+      b.textContent=L==='en'?'Thanks! We will be in touch.':'¡Gracias! Te contactamos.';
+      b.style.background='#047857';b.style.color='#fff';
+      form.reset();
+    }else{
+      b.textContent=L==='en'?'Error, retry':'Error, reintente';
+      b.style.background='#B91C1C';b.style.color='#fff';
+    }
+    b.disabled=false;setTimeout(idle,3600);
+  }).catch(function(){
+    b.textContent=L==='en'?'Error, retry':'Error, reintente';
+    b.style.background='#B91C1C';b.style.color='#fff';
+    b.disabled=false;setTimeout(idle,3600);
+  });
+});
+</script>
+</body>
+</html>
