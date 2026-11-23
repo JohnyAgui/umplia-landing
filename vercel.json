@@ -14,7 +14,10 @@
     { "source": "/guias", "destination": "/recursos/guias", "permanent": true },
     { "source": "/guias/:slug", "destination": "/recursos/guias/:slug", "permanent": true },
     { "source": "/preguntas-frecuentes", "destination": "/recursos/preguntas-frecuentes", "permanent": true },
-    { "source": "/herramientas", "destination": "/recursos/umplia-tools", "permanent": true }
+    { "source": "/herramientas", "destination": "/recursos/umplia-tools", "permanent": true },
+    { "source": "/cosmeticos", "destination": "/#proceso", "permanent": true },
+    { "source": "/en/cosmetics", "destination": "/en#proceso", "permanent": true },
+    { "source": "/como-funciona", "destination": "/#proceso", "permanent": true }
   ],
   "headers": [
     {

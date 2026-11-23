@@ -223,7 +223,7 @@ table{border-collapse:collapse}
 .tile{background:var(--grey);border-radius:clamp(18px,1.6vw,32px);padding:clamp(14px,3vw,56px);overflow:hidden;margin:0}
 .sec-grey .tile{background:#fff}
 .tile img{border-radius:clamp(8px,.8vw,14px);width:100%}
-.shot{margin-top:var(--s-block)}
+
 .cap{margin-top:14px;font-size:var(--t-small);color:var(--ink-2)}
 .split{display:grid;row-gap:var(--s-block);align-items:center}
 
@@ -482,7 +482,7 @@ table{border-collapse:collapse}
 /* hyphenation only where the measure is short (phones) */
 @media (min-width:735px){:is(.lead,.duo-b p,.prose p,.prose li,.faq-item p,.lines span,.person .bio,.tool p,.hub span,.cap,.facts dd){hyphens:manual;-webkit-hyphens:manual}}
 
-#problema{padding-top:clamp(40px,4vw,72px)}
+#problema{padding-block:clamp(40px,4vw,72px)}
 
 /* ---------- problem + product pair (col 1-5 / col 7-12) ---------- */
 .pair{display:grid;row-gap:var(--s-block)}
@@ -493,7 +493,7 @@ table{border-collapse:collapse}
   .pair>:first-child{grid-column:1/7}
   .pair>:last-child{grid-column:7/13}
 }
-.pair+.tile{margin-top:var(--s-block)}
+
 
 .modules-lead{max-width:none}
 @media (min-width:1280px){.modules-lead{white-space:nowrap}}

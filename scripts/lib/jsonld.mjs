@@ -5,7 +5,7 @@ import { text } from './util.mjs';
 
 const ORG = `${SITE.origin}/#organization`;
 const WEB = `${SITE.origin}/#website`;
-const SOFT = `${SITE.origin}/cosmeticos#software`;
+const SOFT = `${SITE.origin}/#software`;
 const PERSON = `${SITE.origin}/nosotros#johny-aguilar`;
 
 const COUNTRIES = [
@@ -64,7 +64,7 @@ function software(lang) {
     applicationCategory: 'BusinessApplication',
     applicationSubCategory: es ? 'Validación de dossiers regulatorios de cosméticos' : 'Cosmetic regulatory dossier validation',
     operatingSystem: 'Web',
-    url: url(es ? '/cosmeticos' : '/en/cosmetics'),
+    url: url(es ? '/' : '/en'),
     description: es
       ? 'Valida dossiers de Notificación Sanitaria Obligatoria (NSO) de cosméticos antes de radicarlos: coherencia entre documentos (validación interna) y cumplimiento de la Decisión 833 y de los requisitos de INVIMA, DIGEMID, ARCSA y AGEMED (validación externa).'
       : 'Validates cosmetic Mandatory Health Notification (NSO) dossiers before filing: consistency across documents (internal validation) and compliance with Andean Decision 833 and the requirements of INVIMA, DIGEMID, ARCSA and AGEMED (external validation).',

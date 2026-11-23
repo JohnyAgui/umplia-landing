@@ -24,7 +24,7 @@
   dds.forEach(function (dd) {
     dd.addEventListener('toggle', function () { if (dd.open) dds.forEach(function (o) { if (o !== dd) o.open = false; }); });
   });
-  d.addEventListener('click', function (e) { if (!nav || nav.classList.contains('is-open')) return; dds.forEach(function (dd) { if (dd.open && !dd.contains(e.target)) dd.open = false; }); });
+  d.addEventListener('click', function (e) { if (!nav || nav.classList.contains('is-open')) return; dds.forEach(function (dd) { if (dd.open && (!dd.contains(e.target) || e.target.closest('.dd-panel a'))) dd.open = false; }); });
   function setMenu(open) {
     nav.classList.toggle('is-open', open);
     d.body.classList.toggle('menu-open', open);

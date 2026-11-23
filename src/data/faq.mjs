@@ -3,6 +3,7 @@
 
 const es = {
   que: ['¿Qué es Umplia?', 'Umplia® para Cosméticos es un software que valida dossiers de Notificación Sanitaria Obligatoria (NSO) de cosméticos antes de radicarlos ante INVIMA (Colombia), DIGEMID (Perú), ARCSA (Ecuador) y AGEMED (Bolivia). Lo desarrolla Umplia, Inc. y está disponible desde el 23 de noviembre de 2026.'],
+  impacto: ['¿Qué significa impacto alto, medio y bajo?', 'Impacto alto: incumple una exigencia de la norma, con riesgo de rechazo o requerimiento; el expediente no está listo para radicar mientras exista uno. Impacto medio: un dato no coincide dentro del expediente o un campo está mal diligenciado; un evaluador lo va a cuestionar. Impacto bajo: defecto de escritura o forma que no compromete el cumplimiento ni la identificación.'],
   revisa: ['¿Qué revisa Umplia en un dossier?', 'Hace dos validaciones. La validación interna verifica la consistencia de la información en todos los documentos del dossier: fórmula, rotulado, especificaciones, estabilidad y declaraciones del fabricante. La validación externa comprueba que el dossier cumpla la Decisión 833 y sus modificaciones, los requisitos de cada autoridad, la nomenclatura INCI y los listados de referencia. El resultado es un reporte con los hallazgos priorizados por impacto alto, medio y bajo.'],
   modulos: ['¿Qué módulos tiene Umplia?', 'Dos. <a href="/cosmeticos/nuevas-nso">Nuevas NSO</a> revisa el dossier completo de una nueva NSO. <a href="/cosmeticos/modificaciones">Modificaciones</a> revisa los cambios a una NSO ya otorgada y cubre 19 tipos de modificación.'],
   renov: ['¿Umplia cubre renovaciones de NSO?', 'No. Hoy Umplia cubre Nuevas NSO y Modificaciones.'],
@@ -40,11 +41,9 @@ const pick = (src, keys) => keys.map((k) => src[k]);
 export const FAQ = {
   es: {
     home: pick(es, ['que', 'revisa', 'paises', 'reemplaza']),
-    cosmeticos: pick(es, ['modulos', 'renov', 'radica', 'farma', 'precio']),
-    full: pick(es, ['que', 'revisa', 'modulos', 'renov', 'paises', 'tarda', 'reemplaza', 'radica', 'requer', 'ia', 'farma', 'precio', 'demo', 'tools', 'nso', 'vigencia', 'd833']),
+    full: pick(es, ['que', 'revisa', 'impacto', 'modulos', 'renov', 'paises', 'tarda', 'reemplaza', 'radica', 'requer', 'ia', 'farma', 'precio', 'demo', 'tools', 'nso', 'vigencia', 'd833']),
   },
   en: {
     home: pick(en, ['que', 'revisa', 'paises', 'reemplaza']),
-    cosmetics: pick(en, ['modulos', 'renov', 'radica', 'farma', 'precio']),
   },
 };
