@@ -45,7 +45,7 @@ export const PAGES = [
   {
     id: 'recursos', lang: 'es', path: '/recursos', src: 'es/recursos/index.html', kind: 'page', updated: D,
     title: 'Recursos para asuntos regulatorios de cosméticos | Umplia',
-    description: 'Herramientas gratuitas, guías de NSO para la Comunidad Andina, preguntas frecuentes y la película de lanzamiento de Umplia.',
+    description: 'Umplia Tools, herramientas gratuitas para tus PDF del INVIMA, y preguntas frecuentes sobre Umplia y la NSO de cosméticos.',
     crumbs: [['Recursos', '/recursos']],
   },
   {
@@ -56,33 +56,11 @@ export const PAGES = [
     llms: ['Recursos', 'programa gratuito para dividir, armar y comprimir PDF de trámites ante el INVIMA, sin internet.'],
   },
   {
-    id: 'guias', lang: 'es', path: '/recursos/guias', src: 'es/recursos/guias/index.html', kind: 'page', updated: D,
-    title: 'Guías de NSO de cosméticos en la Comunidad Andina | Umplia',
-    description: 'Guías con fuentes oficiales sobre la Notificación Sanitaria Obligatoria de cosméticos en Colombia, Perú, Ecuador y Bolivia.',
-    crumbs: [['Recursos', '/recursos'], ['Guías', '/recursos/guias']],
-  },
-  {
-    id: 'guia-can', lang: 'es', path: '/recursos/guias/nso-cosmeticos-comunidad-andina', src: 'es/recursos/guias/nso-cosmeticos-comunidad-andina.html', kind: 'guide', updated: D, published: D,
-    title: 'NSO de cosméticos en la CAN: Decisión 833 y requisitos',
-    description: 'Qué es la NSO de cosméticos, qué exige la Decisión 833 tras la Decisión 944 de 2025, cuánto dura y cómo se reconoce en Colombia, Perú, Ecuador y Bolivia.',
-    crumbs: [['Recursos', '/recursos'], ['Guías', '/recursos/guias'], ['NSO de cosméticos en la Comunidad Andina', '/recursos/guias/nso-cosmeticos-comunidad-andina']],
-    headline: 'Notificación Sanitaria Obligatoria (NSO) de cosméticos en la Comunidad Andina',
-    llms: ['Guías', 'qué es la NSO, requisitos del Art. 9 tras la Decisión 944 de 2025, vigencia de 7 años y reconocimiento entre países, con fuentes oficiales.'],
-  },
-  {
     id: 'faq', lang: 'es', path: '/recursos/preguntas-frecuentes', src: 'es/recursos/preguntas-frecuentes.html', kind: 'faq', updated: D,
     title: 'Preguntas frecuentes sobre Umplia y la NSO | Umplia',
     description: 'Qué valida Umplia, en qué países funciona, qué módulos tiene y qué es la NSO de cosméticos.',
     crumbs: [['Recursos', '/recursos'], ['Preguntas frecuentes', '/recursos/preguntas-frecuentes']],
     llms: ['Guías', 'respuestas sobre el producto y la NSO.'],
-  },
-  {
-    id: 'lanzamiento', lang: 'es', path: '/lanzamiento', src: 'es/lanzamiento.html', kind: 'video', updated: D, published: D, og: 'og-lanzamiento.jpg',
-    title: 'Lanzamiento de Umplia para Cosméticos | Película (1:30)',
-    description: 'Desde el 23 de noviembre de 2026, Umplia valida dossiers de cosméticos para Nuevas NSO y Modificaciones en la Comunidad Andina. Mira la película.',
-    crumbs: [['Recursos', '/recursos'], ['La película', '/lanzamiento']],
-    headline: 'Umplia lanza Umplia® para Cosméticos en la Comunidad Andina',
-    llms: ['Producto', 'anuncio del 23 de noviembre de 2026 y película de 1:30 con transcripción.'],
   },
   {
     id: 'nosotros', lang: 'es', path: '/nosotros', src: 'es/nosotros.html', kind: 'about', alt: 'en-about', updated: D, og: 'og-nosotros.jpg',

@@ -18,7 +18,7 @@ const es = {
   precio: ['¿Cuánto cuesta Umplia?', 'Depende de tu volumen de trámites y de los módulos que necesites. Lo conversamos en la demo.'],
   demo: ['¿Cómo agendo una demo?', 'Llena el formulario en <a href="/demo">umplia.com/demo</a> o escríbenos a {{mailto}}. Te mostramos Umplia con un dossier de ejemplo.'],
   tools: ['¿Qué es Umplia Tools?', 'Un programa gratuito con herramientas para tus trámites ante el INVIMA: Divisor de PDF, Armar PDF, Comprimir PDF y Comprimir y dividir. Funciona sin internet, en Windows y macOS. <a href="/recursos/umplia-tools">Conoce Umplia Tools</a>.'],
-  nso: ['¿Qué es la NSO de cosméticos?', 'La Notificación Sanitaria Obligatoria es la comunicación, con carácter de declaración jurada, con la que el titular informa a la autoridad sanitaria que comercializará un cosmético en un país de la Comunidad Andina. <a href="/recursos/guias/nso-cosmeticos-comunidad-andina">Lee la guía completa</a>.'],
+  nso: ['¿Qué es la NSO de cosméticos?', 'La Notificación Sanitaria Obligatoria es la comunicación, con carácter de declaración jurada, con la que el titular informa a la autoridad sanitaria que comercializará un cosmético en un país de la Comunidad Andina.'],
   vigencia: ['¿Cuánto dura una NSO?', 'Siete años desde la fecha del código, renovables por periodos iguales, según el Art. 18 de la Decisión 833.'],
   d833: ['¿Qué es la Decisión 833?', 'Es la norma de la Comunidad Andina que armoniza la regulación de los productos cosméticos en Colombia, Perú, Ecuador y Bolivia. Aplica desde el 1 de marzo de 2021. La Decisión 944 de 2025 reemplazó su Art. 9, la lista de requisitos de la NSO.'],
 };
