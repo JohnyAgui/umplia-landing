@@ -1,0 +1,47 @@
+# Umplia
+
+> Umplia® para Cosméticos es un software (SaaS) que valida dossiers regulatorios de cosméticos antes de radicarlos ante las autoridades sanitarias de la Comunidad Andina: INVIMA (Colombia), DIGEMID (Perú), ARCSA (Ecuador) y AGEMED (Bolivia). Está disponible desde el 23 de noviembre de 2026 con dos módulos: Nuevas NSO y Modificaciones.
+
+Umplia (Umplia, Inc.) revisa cada dossier de Notificación Sanitaria Obligatoria (NSO) de cosméticos con dos validaciones:
+- Validación interna: que los documentos del dossier digan lo mismo entre sí (fórmula, rotulado, especificaciones, estabilidad, declaraciones del fabricante).
+- Validación externa: que el dossier cumpla la Decisión 833 de la Comunidad Andina y sus modificaciones, los requisitos de cada autoridad, la nomenclatura INCI y los listados de referencia.
+
+El resultado es un reporte con los hallazgos priorizados por impacto alto, medio y bajo. Umplia nunca inventa datos: cuando los documentos no coinciden, muestra cuáles coinciden y cuál difiere, y el profesional de Asuntos Regulatorios decide. Lo que no se puede leer con claridad queda marcado como "Requiere revisión humana". Umplia no radica el trámite ante la autoridad.
+
+Módulos:
+- Nuevas NSO: el dossier completo de una nueva NSO, antes de radicar.
+- Modificaciones: cada cambio a una NSO ya otorgada, antes de radicar (19 tipos de modificación).
+
+Resultados:
+- 35 min en promedio por dossier de nueva NSO.
+- La revisión manual de un dossier completo toma de 8 a 9 horas.
+- Más del doble de errores encontrados que la revisión manual.
+- Hasta 27x más rápido.
+
+Para quién: equipos de Asuntos Regulatorios de fabricantes, maquiladores, importadores y marcas de cosméticos, y de laboratorios farmacéuticos que también notifican cosméticos, en Colombia, Perú, Ecuador y Bolivia. Umplia para Cosméticos no cubre registros sanitarios de medicamentos ni renovaciones de NSO.
+
+Seguridad: los dossiers se guardan en Colombia (Oracle Cloud, región Bogotá), cifrados en reposo. Los analiza un modelo de IA de código abierto que opera Umplia: no se envían a ChatGPT, Gemini ni Claude y no se usan para entrenar el modelo. Certificación SOC 2 en curso.
+
+Recurso gratuito: Umplia Tools, un programa para Windows y macOS que divide, arma y comprime los PDF de los trámites ante el INVIMA, sin internet. Descarga: https://app.umplia.com/tools
+
+Empresa: Umplia, Inc. Cofundador y CEO: Johny Aguilar, basado en Bogotá. Acelerado por Esade eWorks. Contacto: {{email}}. Demo: https://www.umplia.com/demo
+
+## Producto
+{{section:Producto}}
+
+## Recursos
+{{section:Recursos}}
+
+## Guías regulatorias de cosméticos (Comunidad Andina)
+{{section:Guías}}
+
+## Empresa
+{{section:Empresa}}
+- [Umplia en LinkedIn](https://www.linkedin.com/company/umplia/)
+
+## English
+Umplia® for Cosmetics is SaaS that validates cosmetic regulatory dossiers (NSO, Notificación Sanitaria Obligatoria) before they are filed with INVIMA (Colombia), DIGEMID (Peru), ARCSA (Ecuador) and AGEMED (Bolivia) under Andean Community Decision 833. Two modules, available since 23 November 2026: New NSOs and Modifications (19 modification types). Umplia never invents data; the regulatory professional decides on every finding. Dossiers are stored in Colombia (Oracle Cloud, Bogotá region), encrypted at rest, and analyzed by an open-source AI model operated by Umplia; they are not sent to ChatGPT, Gemini or Claude and are not used for training. Cosmetics only; it does not cover medicines registration.
+{{section:English}}
+
+## Optional
+- [Política de tratamiento de datos personales](https://www.umplia.com/privacidad)

@@ -1,0 +1,47 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "node scripts/build.mjs",
+  "outputDirectory": "dist",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/:path*", "has": [{ "type": "host", "value": "umplia-landing.vercel.app" }], "destination": "https://www.umplia.com/:path*", "permanent": true },
+    { "source": "/contacto", "destination": "/demo", "permanent": true },
+    { "source": "/about", "destination": "/en/about", "permanent": true },
+    { "source": "/preguntas-frecuentes", "destination": "/recursos/preguntas-frecuentes", "permanent": true },
+    { "source": "/herramientas", "destination": "/recursos/umplia-tools", "permanent": true },
+    { "source": "/cosmeticos", "destination": "/#proceso", "permanent": true },
+    { "source": "/en/cosmetics", "destination": "/en#proceso", "permanent": true },
+    { "source": "/como-funciona", "destination": "/#proceso", "permanent": true }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(), interest-cohort=()" },
+        { "key": "Strict-Transport-Security", "value": "max-age=31536000; includeSubDomains" },
+        { "key": "Content-Security-Policy-Report-Only", "value": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; media-src 'self'; font-src 'self'; connect-src 'self' https://formspree.io; form-action 'self' https://formspree.io; frame-ancestors 'none'; base-uri 'self'; object-src 'none'" }
+      ]
+    },
+    {
+      "source": "/(robots|llms).txt",
+      "headers": [{ "key": "Content-Type", "value": "text/plain; charset=utf-8" }]
+    },
+    {
+      "source": "/.well-known/security.txt",
+      "headers": [{ "key": "Content-Type", "value": "text/plain; charset=utf-8" }]
+    },
+    {
+      "source": "/",
+      "headers": [{ "key": "Link", "value": "</llms.txt>; rel=\"describedby\"; type=\"text/plain\"" }]
+    }
+  ]
+}
