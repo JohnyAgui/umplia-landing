@@ -39,12 +39,12 @@ const pick = (src, keys) => keys.map((k) => src[k]);
 
 export const FAQ = {
   es: {
-    home: pick(es, ['que', 'revisa', 'paises', 'reemplaza', 'donde']),
+    home: pick(es, ['que', 'revisa', 'paises', 'reemplaza']),
     cosmeticos: pick(es, ['modulos', 'renov', 'radica', 'farma', 'precio']),
-    full: pick(es, ['que', 'revisa', 'modulos', 'renov', 'paises', 'tarda', 'reemplaza', 'radica', 'requer', 'donde', 'ia', 'farma', 'precio', 'demo', 'tools', 'nso', 'vigencia', 'd833']),
+    full: pick(es, ['que', 'revisa', 'modulos', 'renov', 'paises', 'tarda', 'reemplaza', 'radica', 'requer', 'ia', 'farma', 'precio', 'demo', 'tools', 'nso', 'vigencia', 'd833']),
   },
   en: {
-    home: pick(en, ['que', 'revisa', 'paises', 'reemplaza', 'donde']),
+    home: pick(en, ['que', 'revisa', 'paises', 'reemplaza']),
     cosmetics: pick(en, ['modulos', 'renov', 'radica', 'farma', 'precio']),
   },
 };
