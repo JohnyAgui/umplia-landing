@@ -9,11 +9,11 @@ Umplia (Umplia, Inc.) revisa cada dossier de Notificación Sanitaria Obligatoria
 El resultado es un reporte con los hallazgos priorizados por impacto alto, medio y bajo. Umplia nunca inventa datos: cuando los documentos no coinciden, muestra cuáles coinciden y cuál difiere, y el profesional de Asuntos Regulatorios decide. Lo que no se puede leer con claridad queda marcado como "Requiere revisión humana". Umplia no radica el trámite ante la autoridad.
 
 Módulos:
-- Nuevas NSO: el dossier completo de una NSO nueva, antes de radicar.
+- Nuevas NSO: el dossier completo de una nueva NSO, antes de radicar.
 - Modificaciones: cada cambio a una NSO ya otorgada, antes de radicar (19 tipos de modificación).
 
 Resultados:
-- 35 min en promedio por dossier de NSO nueva.
+- 35 min en promedio por dossier de nueva NSO.
 - La revisión manual de un dossier completo toma de 8 a 9 horas.
 - Más del doble de errores encontrados que la revisión manual.
 - Hasta 27x más rápido*.

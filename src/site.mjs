@@ -36,10 +36,10 @@ export const PAGES = [
   {
     id: 'nuevas-nso', lang: 'es', path: '/cosmeticos/nuevas-nso', src: 'es/cosmeticos/nuevas-nso.html', kind: 'page', updated: D,
     title: 'Nuevas NSO: revisa tu dossier antes de radicar | Umplia',
-    description: 'El módulo Nuevas NSO revisa el dossier completo de una NSO nueva de cosméticos: coherencia entre documentos y cumplimiento de la norma andina.',
+    description: 'El módulo Nuevas NSO revisa el dossier completo de una nueva NSO de cosméticos: coherencia entre documentos y cumplimiento de la norma andina.',
     crumbs: [['Producto', null], ['Umplia para Cosméticos', '/cosmeticos'], ['Nuevas NSO', '/cosmeticos/nuevas-nso']],
     software: true,
-    llms: ['Producto', 'validación del dossier completo de una NSO nueva.'],
+    llms: ['Producto', 'validación del dossier completo de una nueva NSO.'],
   },
   {
     id: 'modificaciones', lang: 'es', path: '/cosmeticos/modificaciones', src: 'es/cosmeticos/modificaciones.html', kind: 'page', updated: D,

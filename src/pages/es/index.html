@@ -1,11 +1,11 @@
 <section class="hero" aria-labelledby="hero-title">
   <div class="hero-head">
-    <p class="hero-eyebrow grad">Nuevo</p>
-    <h1 id="hero-title"><span class="hero-name">Umplia<span class="reg">®</span> para Cosméticos</span><span class="hero-sub">Tu dossier validado en minutos <span class="grad">antes de radicar.</span></span></h1>
+    <p class="hero-eyebrow">Nuevo</p>
+    <h1 id="hero-title"><span class="hero-name">Umplia<span class="reg">®</span> para Cosméticos</span><span class="hero-sub">Tu dossier validado en minutos antes de radicar.</span></h1>
   </div>
   <p class="cta-row hero-cta">
     <a class="btn btn-lg" href="#acceso">Agenda una demo</a>
-    <a class="play" href="/lanzamiento" data-film><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 8v8l6-4z" fill="currentColor"/></svg>Ver video</a>
+    <a class="btn btn-lg btn-outline" href="/lanzamiento" data-film>Ver video</a>
   </p>
   {{partial:hero-media}}
   <div class="hero-lead">
@@ -14,24 +14,28 @@
 </section>
 
 <section class="sec" id="problema">
-  <div class="wrap narrow">
-    <p class="eyebrow">El problema</p>
-    <h2 class="statement reveal">Detrás de cada cosmético hay un dossier.</h2>
-    <p class="lead reveal">Cientos de páginas que un profesional de Asuntos Regulatorios revisa manualmente, una por una, entre 8 y 9 horas por cada dossier completo de nueva NSO. Aun así, hay errores que el ojo humano no ve. El error que hoy pasa desapercibido, mañana es un requerimiento de la autoridad sanitaria.</p>
-    <p class="statement center mt-l reveal">Radicar un dossier no debería ser <span class="grad">un acto de fe.</span></p>
+  <div class="wrap duo">
+    <div class="duo-h">
+      <p class="eyebrow">El problema</p>
+      <h2 class="statement reveal">Detrás de cada cosmético hay un dossier.</h2>
+    </div>
+    <div class="duo-b">
+      <p class="lead reveal">Cientos de páginas que un profesional de Asuntos Regulatorios revisa manualmente, una por una, entre 8 y 9 horas por cada dossier completo de nueva NSO. Aun así, hay errores que el ojo humano no ve. El error que hoy pasa desapercibido, mañana es un requerimiento de la autoridad sanitaria.</p>
+    </div>
+    <p class="statement center mt-l reveal span-all">Radicar un dossier no debería ser un acto de fe.</p>
   </div>
 </section>
 
 <section class="sec sec-grey" id="producto">
   <div class="wrap">
-    <div class="block center">
+    <div class="sh">
       <p class="eyebrow">El producto</p>
-      <h2 class="h2 reveal">Umplia revisa todo tu dossier <span class="grad">antes de radicar.</span></h2>
+      <h2 class="h2 reveal">Umplia revisa todo tu dossier antes de radicar.</h2>
       <p class="lead reveal">Lee cada documento del expediente, valida que la información sea coherente en todo el dossier y que cumpla la norma andina, y te entrega un reporte con los hallazgos priorizados por impacto. Tú decides sobre cada hallazgo.</p>
       <p class="cta-row mt-m"><a class="more" href="/cosmeticos">Conoce Umplia para Cosméticos</a></p>
     </div>
     <figure class="shot tile reveal">
-      {{img:s1|Reporte de análisis de Umplia del dossier de ejemplo Sérum Facial Iluminador Aurora: expediente no listo para radicar, 8 hallazgos de impacto alto, 17 de impacto medio y 3 de impacto bajo, y la tabla de los 13 documentos del expediente.|(min-width: 1280px) 1120px, 92vw}}
+      {{img:reporte|Reporte de análisis de Umplia del dossier de ejemplo Sérum Facial Iluminador Aurora: expediente no listo para radicar, 8 hallazgos de impacto alto, 17 de impacto medio y 3 de impacto bajo, y la tabla de los 13 documentos del expediente.|(min-width: 1880px) 1580px, 90vw}}
     </figure>
   </div>
 </section>
@@ -42,57 +46,61 @@
     <h2 class="h2" id="modulos-title">Dos módulos.</h2>
     <div class="modules">
       <div class="module reveal">
-        <span class="num grad" aria-hidden="true">1</span>
+        <span class="num" aria-hidden="true">1</span>
         <h3>Nuevas NSO</h3>
         <p>El dossier completo, antes de radicar.</p>
         <a class="more" href="/cosmeticos/nuevas-nso">Conoce Nuevas NSO</a>
       </div>
       <div class="module reveal">
-        <span class="num grad" aria-hidden="true">2</span>
+        <span class="num" aria-hidden="true">2</span>
         <h3>Modificaciones</h3>
         <p>Cada cambio a tu NSO, antes de radicar. 19 tipos de modificación.</p>
         <a class="more" href="/cosmeticos/modificaciones">Conoce Modificaciones</a>
       </div>
     </div>
-    <p class="lead center mt-l reveal">Con Umplia desaparece la parte manual y repetitiva de la revisión de dossiers para nuevas NSO y modificaciones.</p>
+    <p class="lead center one-line mt-l reveal">Con Umplia desaparece la parte manual y repetitiva de la revisión de dossiers para nuevas NSO y modificaciones.</p>
   </div>
 </section>
 
 <section class="sec sec-grey" aria-labelledby="certeza-title">
-  <div class="wrap narrow">
-    <p class="eyebrow">Certeza primero</p>
-    <h2 class="h2 reveal" id="certeza-title">Umplia nunca inventa datos.</h2>
-    <p class="lead reveal">Cuando los documentos no coinciden, te muestra cuáles coinciden y cuál difiere, y el profesional decide. Lo que no se puede leer con claridad queda marcado como «Requiere revisión humana».</p>
-    <ul class="lines">
-      <li class="reveal"><strong>Validación interna</strong><span>Coherencia entre fórmula, rotulado, especificaciones, estabilidad y declaraciones del fabricante.</span></li>
-      <li class="reveal"><strong>Validación externa</strong><span>Decisión 833 y sus modificaciones, requisitos de cada autoridad, nomenclatura INCI y listados de referencia.</span></li>
-      <li class="reveal"><strong>Hallazgos por impacto</strong><span>Alto, medio y bajo, para que corrijas primero lo que puede frenar tu trámite.</span></li>
-    </ul>
+  <div class="wrap duo">
+    <div class="duo-h">
+      <p class="eyebrow">Certeza primero</p>
+      <h2 class="h2 reveal" id="certeza-title">Umplia nunca inventa datos.</h2>
+    </div>
+    <div class="duo-b">
+      <p class="lead reveal">Cuando los documentos no coinciden, te muestra cuáles coinciden y cuál difiere, y el profesional decide. Lo que no se puede leer con claridad queda marcado como «Requiere revisión humana».</p>
+      <ul class="lines">
+        <li class="reveal"><strong>Validación interna</strong><span>Coherencia entre fórmula, rotulado, especificaciones, estabilidad y declaraciones del fabricante.</span></li>
+        <li class="reveal"><strong>Validación externa</strong><span>Decisión 833 y sus modificaciones, requisitos de cada autoridad, nomenclatura INCI y listados de referencia.</span></li>
+        <li class="reveal"><strong>Hallazgos por impacto</strong><span>Alto, medio y bajo, para que corrijas primero lo que puede frenar tu trámite.</span></li>
+      </ul>
+    </div>
   </div>
 </section>
 
 <section class="sec" id="proceso">
   <div class="wrap">
-    <div class="split wide-media">
+    <div class="split">
       <div>
         <p class="eyebrow">Cómo funciona</p>
         <h2 class="h2 reveal">Así funciona.</h2>
         <ol class="steps steps-stack">
-          <li class="reveal"><span class="step-n grad">1</span><h3>Sube tu dossier completo.</h3><p>Todos los documentos del expediente, tal como los tienes.</p></li>
-          <li class="reveal"><span class="step-n grad">2</span><h3>Umplia lo lee de principio a fin.</h3><p>Validación interna y externa de cada documento.</p></li>
-          <li class="reveal"><span class="step-n grad">3</span><h3>Recibe el reporte y decide.</h3><p>Qué corregir, priorizado por impacto, antes de radicar.</p></li>
+          <li class="reveal"><span class="step-n">1</span><h3>Sube tu dossier completo.</h3><p>Todos los documentos del expediente, tal como los tienes.</p></li>
+          <li class="reveal"><span class="step-n">2</span><h3>Umplia lo lee de principio a fin.</h3><p>Validación interna y externa de cada documento.</p></li>
+          <li class="reveal"><span class="step-n">3</span><h3>Recibe el reporte y decide.</h3><p>Qué corregir, priorizado por impacto, antes de radicar.</p></li>
         </ol>
         <p class="mt-m"><a class="more" href="/como-funciona">Cómo funciona</a></p>
       </div>
       <figure class="tile reveal">
-        {{img:s3|Pantalla de Umplia analizando el dossier de ejemplo: «Umplia AI: Análisis Documental automático», procesando simultáneamente los 13 documentos del expediente.|(min-width: 1024px) 640px, 92vw}}
+        {{img:proceso|Pantalla de Umplia analizando el dossier de ejemplo: «Umplia AI: Análisis Documental automático», procesando simultáneamente los 13 documentos del expediente.|(min-width: 1880px) 900px, (min-width: 1024px) 48vw, 92vw}}
       </figure>
     </div>
   </div>
 </section>
 
 <section class="sec sec-grey" aria-labelledby="resultados-title">
-  <div class="wrap narrow">
+  <div class="wrap">
     <p class="eyebrow center" id="resultados-title">Resultados</p>
     <div class="reveal">{{partial:results}}</div>
   </div>
@@ -100,7 +108,7 @@
 
 <section class="sec" id="cobertura">
   <div class="wrap">
-    <div class="center">
+    <div class="sh">
       <p class="eyebrow">Cobertura</p>
       <h2 class="h2 reveal">Hecho para la Comunidad Andina.</h2>
       <p class="lead reveal">Un mismo marco, la Decisión 833 de la CAN, y los requisitos propios de cada autoridad sanitaria.</p>
@@ -115,61 +123,35 @@
   </div>
 </section>
 
-<section class="sec sec-grey" aria-labelledby="seguridad-title">
-  <div class="wrap narrow">
-    <p class="eyebrow">Seguridad</p>
-    <h2 class="h2 reveal" id="seguridad-title">Tus dossiers se guardan en Colombia.</h2>
-    <p class="lead reveal">Los dossiers se guardan en Colombia (Oracle Cloud, región Bogotá), cifrados en reposo. Los analiza un modelo de IA de código abierto que opera Umplia: no se envían a ChatGPT, Gemini ni Claude y no se usan para entrenar el modelo.</p>
-    <p class="mt-m"><a class="more" href="/seguridad">Seguridad</a></p>
+<section class="sec sec-grey" aria-labelledby="quien-title">
+  <div class="wrap duo">
+    <div class="duo-h">
+      <p class="eyebrow">Para quién es</p>
+      <h2 class="h2 reveal" id="quien-title">Para equipos de Asuntos Regulatorios.</h2>
+    </div>
+    <div class="duo-b">
+      <p class="lead reveal">De fabricantes, maquiladores, importadores y marcas de cosméticos en Colombia, Perú, Ecuador y Bolivia. Y de farmacéuticas que también notifican cosméticos.</p>
+    </div>
   </div>
 </section>
 
-<section class="sec sec-tight" aria-label="Para quién es">
-  <div class="wrap narrow center">
-    <p class="statement reveal">Para equipos de Asuntos Regulatorios de fabricantes, maquiladores, importadores y marcas de cosméticos. <span class="grad">Y para farmacéuticas que también notifican cosméticos.</span></p>
-  </div>
-</section>
-
-<section class="sec sec-grey" aria-labelledby="tools-title">
+<section class="sec" aria-labelledby="tools-title">
   <div class="wrap">
     <div class="split">
       <div>
         <p class="eyebrow">Recursos gratuitos</p>
-        <h2 class="h2 reveal" id="tools-title">Umplia Tools. <span class="grad">Gratis.</span></h2>
+        <h2 class="h2 reveal" id="tools-title">Umplia Tools. Gratis.</h2>
         <p class="lead reveal">Un solo programa con las herramientas gratuitas de Umplia para tus trámites ante el INVIMA: divide, arma y comprime tus PDF. Funciona sin internet: tus documentos nunca salen de tu computador.</p>
         <p class="cta-row mt-m"><a class="more" href="/recursos/umplia-tools">Conoce Umplia Tools</a></p>
       </div>
       <figure class="tile reveal">
-        {{img:tool-comprimir-pdf|Umplia Tools, herramienta Comprimir PDF: muestra cuánto quedará pesando cada documento antes de comprimirlo.|(min-width: 1024px) 560px, 92vw}}
+        {{img:tool-comprimir-pdf|Umplia Tools, herramienta Comprimir PDF: muestra cuánto quedará pesando cada documento antes de comprimirlo.|(min-width: 1880px) 780px, (min-width: 1024px) 42vw, 92vw}}
       </figure>
     </div>
   </div>
 </section>
 
-<section class="sec film-band" aria-labelledby="film-title">
-  <div class="wrap">
-    <div class="center">
-      <p class="eyebrow">La película</p>
-      <h2 class="h2 reveal" id="film-title">Mira la película.</h2>
-    </div>
-    <div class="media-frame mt-l reveal">
-      {{img:film-poster|{{t:film-poster-alt}}|(min-width: 1280px) 1120px, 92vw}}
-      <a href="/lanzamiento" class="film-open" data-film aria-label="Ver la película de lanzamiento (1:30)"><span class="play-badge"><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span></a>
-    </div>
-    <p class="cap">Umplia para Cosméticos. 1 min 30 s. <a href="/lanzamiento">Transcripción y capítulos</a></p>
-  </div>
-</section>
-
-<section class="sec sec-tight" aria-label="Empresa">
-  <div class="wrap">
-    <div class="company">
-      <p>Hecho en Bogotá. <span class="grad">Acelerado por Esade eWorks.</span></p>
-      <a class="more" href="/nosotros">Conoce al equipo</a>
-    </div>
-  </div>
-</section>
-
-<section class="sec" aria-labelledby="faq-title">
+<section class="sec sec-grey" aria-labelledby="faq-title">
   <div class="wrap">
     <p class="eyebrow">Preguntas frecuentes</p>
     <h2 class="h2" id="faq-title">Lo que más nos preguntan.</h2>
@@ -178,7 +160,7 @@
   </div>
 </section>
 
-<section class="sec sec-grey" id="acceso">
+<section class="sec" id="acceso">
   <div class="wrap">
     <div class="demo">
       <div>

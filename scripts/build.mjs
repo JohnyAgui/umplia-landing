@@ -17,7 +17,7 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SRC = join(ROOT, 'src');
 const DIST = join(ROOT, 'dist');
 
-const EMAIL = (process.env.CONTACT_EMAIL || '').trim();
+const EMAIL = (process.env.CONTACT_EMAIL || 'info' + '@' + 'umplia.com').trim();
 if (!/^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i.test(EMAIL)) {
   console.error('build: CONTACT_EMAIL is not set (Vercel > Settings > Environment Variables). Refusing to build a site without contact.');
   process.exit(1);
@@ -218,7 +218,7 @@ function head(page) {
   L.push(`<link rel="stylesheet" href="${CSS}">`);
   if (page.kind === 'home') {
     const set = (ext) => IMAGES['hero-poster'].widths.map((w) => `${asset(`img/hero-poster-${w}.${ext}`)} ${w}w`).join(', ');
-    L.push(`<link rel="preload" as="image" type="image/avif" imagesrcset="${set('avif')}" imagesizes="(min-width: 1360px) 1280px, 100vw" fetchpriority="high">`);
+    L.push(`<link rel="preload" as="image" type="image/avif" imagesrcset="${set('avif')}" imagesizes="(min-width: 1872px) 1680px, (min-width: 735px) 90vw, 100vw" fetchpriority="high">`);
   }
   L.push('<link rel="icon" href="/favicon.ico" sizes="32x32">');
   L.push(`<link rel="icon" type="image/png" sizes="192x192" href="${asset('img/icon-192.png')}">`);
