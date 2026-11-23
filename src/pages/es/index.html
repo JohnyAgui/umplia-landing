@@ -5,7 +5,6 @@
   </div>
   <p class="cta-row hero-cta">
     <a class="btn btn-lg" href="#acceso">Agenda una demo</a>
-    <a class="btn btn-lg btn-outline" href="/lanzamiento" data-film>Ver video</a>
   </p>
   {{partial:hero-media}}
   </section>
@@ -73,21 +72,17 @@
 
 <section class="sec sec-grey" id="proceso">
   <div class="wrap">
-    <div class="split">
-      <div>
-        <p class="eyebrow">Cómo funciona</p>
-        <h2 class="h2 reveal">Así funciona.</h2>
-        <ol class="steps steps-stack">
-          <li class="reveal"><span class="step-n">1</span><h3>Sube tu dossier completo.</h3><p>Todos los documentos del expediente, tal como los tienes.</p></li>
+    <div class="sh">
+      <p class="eyebrow">Cómo funciona</p>
+      <h2 class="h2 reveal">Así funciona.</h2>
+    </div>
+    <ol class="steps steps-row">
+          <li class="reveal"><span class="step-n">1</span><h3>Sube tu dossier completo.</h3><p>Todos los documentos del expediente.</p></li>
           <li class="reveal"><span class="step-n">2</span><h3>Umplia lo lee de principio a fin.</h3><p>Validación interna y externa de cada documento.</p></li>
           <li class="reveal"><span class="step-n">3</span><h3>Recibe el reporte y decide.</h3><p>Qué corregir, priorizado por impacto, antes de radicar.</p></li>
         </ol>
-        <p class="mt-m"><a class="more" href="/como-funciona">Cómo funciona</a></p>
-      </div>
-      <figure class="tile reveal">
-        {{img:proceso|Pantalla de Umplia analizando el dossier de ejemplo: «Umplia AI: Análisis Documental automático», procesando simultáneamente los 13 documentos del expediente.|(min-width: 1880px) 900px, (min-width: 1024px) 48vw, 92vw}}
-      </figure>
-    </div>
+    {{partial:demo-video}}
+    <p class="mt-m"><a class="more" href="/como-funciona">Cómo funciona</a></p>
   </div>
 </section>
 
@@ -164,4 +159,3 @@
     </div>
   </div>
 </section>
-{{partial:film-dialog}}

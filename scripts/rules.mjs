@@ -40,6 +40,8 @@ export const RULE_EXEMPT = {
   'correo personal': (file) => file.endsWith('.js'),
   // The launch page quotes the film's on-screen text ("Desde hoy.") inside a dated announcement.
   'fecha explícita, no "desde hoy"': (file) => file === 'lanzamiento.html',
+  // demo captions (approved by Johny on 23 Nov 2026): the demo dossier is fictional and is created in Umplia Submit
+  'nombres internos o no lanzados': (file) => /umplia-demo-es\.[0-9a-f]{8}\.vtt$/.test(file),
 };
 
 // Confidential names, prices and internal figures. This repository is public, so they are stored only as

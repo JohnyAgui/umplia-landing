@@ -49,9 +49,16 @@ write(join(DIST, 'favicon.ico'), packIco(['img/icon-16.png', 'img/icon-32.png', 
 
 const assetTokens = (s) => s.replace(/\{\{a:([^}]+)\}\}/g, (_, rel) => asset(rel.trim()));
 
-// CSS and JS get the asset tokens, then their own hash
+// Conservative minifiers: drop comments, indentation and blank lines; never rewrite code.
+const minCss = (s) =>
+  s.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\s*\n\s*/g, '').replace(/\s*([{};,])\s*/g, '$1').replace(/;}/g, '}');
+const minJs = (s) =>
+  s.replace(/^\s*\/\*[\s\S]*?\*\/\s*$/gm, '').split('\n').map((l) => l.trim()).filter(Boolean).join('\n');
+
+// CSS and JS get the asset tokens, minification, then their own hash
 function bundle(srcRel, outBase, ext) {
-  const body = assetTokens(read(join(SRC, srcRel)));
+  const raw = assetTokens(read(join(SRC, srcRel)));
+  const body = ext === 'css' ? minCss(raw) : minJs(raw);
   const out = `/assets/${outBase}.${hash8(body)}.${ext}`;
   write(join(DIST, out), body);
   return out;

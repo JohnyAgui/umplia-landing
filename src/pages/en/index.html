@@ -5,7 +5,6 @@
   </div>
   <p class="cta-row hero-cta">
     <a class="btn btn-lg" href="#acceso">Book a demo</a>
-    <a class="btn btn-lg btn-outline" href="/lanzamiento" data-film>Watch video</a>
   </p>
   {{partial:hero-media}}
   </section>
@@ -70,20 +69,16 @@
 
 <section class="sec sec-grey" id="proceso">
   <div class="wrap">
-    <div class="split">
-      <div>
-        <p class="eyebrow">How it works</p>
-        <h2 class="h2 reveal">Three steps.</h2>
-        <ol class="steps steps-stack">
-          <li class="reveal"><span class="step-n">1</span><h3>Upload your full dossier.</h3><p>Every document in the file, as you have it.</p></li>
+    <div class="sh">
+      <p class="eyebrow">How it works</p>
+      <h2 class="h2 reveal">Three steps.</h2>
+    </div>
+    <ol class="steps steps-row">
+          <li class="reveal"><span class="step-n">1</span><h3>Upload your full dossier.</h3><p>Every document in the file.</p></li>
           <li class="reveal"><span class="step-n">2</span><h3>Umplia reads it end to end.</h3><p>Internal and external validation of every document.</p></li>
           <li class="reveal"><span class="step-n">3</span><h3>Get the report and decide.</h3><p>What to fix, ranked by impact, before you file.</p></li>
         </ol>
-      </div>
-      <figure class="tile reveal">
-        {{img:proceso|Umplia analyzing the sample dossier: “Umplia AI: Análisis Documental automático”, processing the 13 documents at once.|(min-width: 1880px) 900px, (min-width: 1024px) 48vw, 92vw}}
-      </figure>
-    </div>
+    {{partial:demo-video}}
   </div>
 </section>
 
@@ -142,4 +137,3 @@
     </div>
   </div>
 </section>
-{{partial:film-dialog}}

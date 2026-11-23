@@ -2,6 +2,7 @@
 // ratio = intrinsic [w, h]; widths = available widths; jpg = widths that also ship as JPEG fallback.
 export const IMAGES = {
   'hero-poster': { ratio: [1920, 1080], widths: [1280, 1920, 2560], jpg: [1280, 1920], avif: true },
+  'demo-poster': { ratio: [1920, 1080], widths: [1280, 1920], jpg: [1280, 1920], avif: true },
   'film-poster': { ratio: [1280, 720], widths: [1280], jpg: [1280], avif: false },
   reporte: { ratio: [2860, 1798], widths: [1430, 2860], jpg: [1430], avif: true },
   proceso: { ratio: [1496, 936], widths: [748, 1496], jpg: [748], avif: true },

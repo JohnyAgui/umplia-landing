@@ -110,6 +110,14 @@
     if (d.readyState === 'complete') start(); else w.addEventListener('load', start);
   }
 
+  /* ---------- demo video: big play button, then native controls ---------- */
+  [].forEach.call(d.querySelectorAll('.demo-video'), function (fig) {
+    var v = fig.querySelector('video'), b = fig.querySelector('.demo-play');
+    if (!v || !b) return;
+    v.controls = false; b.hidden = false;
+    b.addEventListener('click', function () { b.hidden = true; v.controls = true; var p = v.play(); if (p && p.catch) p.catch(function () {}); v.focus(); });
+  });
+
   /* ---------- film dialog ---------- */
   var dlg = d.getElementById('film');
   if (dlg && typeof dlg.showModal === 'function') {
