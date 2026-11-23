@@ -64,10 +64,10 @@ export const PAGES = [
   },
   {
     id: 'nosotros', lang: 'es', path: '/nosotros', src: 'es/nosotros.html', kind: 'about', alt: 'en-about', updated: D, og: 'og-nosotros.jpg',
-    title: 'Acerca de Umplia: misión y equipo',
+    title: 'Acerca de Umplia: propósito y equipo',
     description: 'Umplia, Inc. desarrolla Umplia, la plataforma que valida dossiers de cosméticos antes de radicar en la CAN. Conoce a Johny Aguilar, cofundador y CEO.',
     crumbs: [['Nosotros', '/nosotros']],
-    llms: ['Empresa', 'misión, historia, equipo y datos de la empresa.'],
+    llms: ['Empresa', 'propósito, historia, equipo y datos de la empresa.'],
   },
   {
     id: 'demo', lang: 'es', path: '/demo', src: 'es/demo.html', kind: 'demo', alt: 'en-demo', updated: D,
@@ -97,7 +97,7 @@ export const PAGES = [
   },
   {
     id: 'en-about', lang: 'en', path: '/en/about', src: 'en/about.html', kind: 'about', alt: 'nosotros', updated: D, og: 'og-nosotros.jpg',
-    title: 'About Umplia: mission and team',
+    title: 'About Umplia: purpose and team',
     description: 'Umplia, Inc. builds Umplia, the platform that validates cosmetic dossiers before filing in the Andean Community. Meet Johny Aguilar, co-founder and CEO.',
     crumbs: [['About', '/en/about']],
     llms: ['English', 'About.'],

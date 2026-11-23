@@ -20,11 +20,11 @@
   /* type scale (apple.com steps; these are the large values, >=1069px) */
   --t-body:17px;--t-small:14px;--t-label:12px;--t-lead:21px;
   --t-hero:56px;--t-hero-sub:28px;--t-hero-eyebrow:21px;
-  --t-h1:56px;--t-h2:48px;--t-statement:48px;--t-duo:40px;--t-h3:28px;--t-h4:21px;
-  --t-num:96px;--t-big:96px;--t-stat:48px;--t-iso:56px;--t-item:32px;
+  --t-h1:56px;--t-h2:48px;--t-duo:40px;--t-h3:28px;--t-h4:21px;
+  --t-num:96px;--t-big:96px;--t-stat:48px;--t-iso:56px;--t-item:32px;--t-purpose:80px;
 }
-@media (max-width:1068px){:root{--t-lead:19px;--t-hero:48px;--t-hero-sub:24px;--t-hero-eyebrow:19px;--t-h1:48px;--t-h2:40px;--t-statement:40px;--t-duo:40px;--t-h3:24px;--t-num:80px;--t-big:80px;--t-stat:40px;--t-iso:48px;--t-item:28px}}
-@media (max-width:734px){:root{--t-lead:19px;--t-hero:32px;--t-hero-sub:19px;--t-hero-eyebrow:17px;--t-h1:32px;--t-h2:32px;--t-statement:28px;--t-duo:32px;--t-h3:21px;--t-h4:19px;--t-num:64px;--t-big:64px;--t-stat:32px;--t-iso:40px;--t-item:24px}}
+@media (max-width:1068px){:root{--t-lead:19px;--t-hero:48px;--t-hero-sub:24px;--t-hero-eyebrow:19px;--t-h1:48px;--t-h2:40px;--t-duo:40px;--t-h3:24px;--t-num:80px;--t-big:80px;--t-stat:40px;--t-iso:48px;--t-item:28px;--t-purpose:64px}}
+@media (max-width:734px){:root{--t-lead:19px;--t-hero:32px;--t-hero-sub:19px;--t-hero-eyebrow:17px;--t-h1:32px;--t-h2:32px;--t-duo:32px;--t-h3:21px;--t-h4:19px;--t-num:64px;--t-big:64px;--t-stat:32px;--t-iso:40px;--t-item:24px;--t-purpose:40px}}
 @media (max-width:1023px){:root{--nav-h:52px}}
 @media (min-width:2200px){:root{--max:1920px}}
 
@@ -56,9 +56,8 @@ table{border-collapse:collapse}
 .h1{font-size:var(--t-h1);font-weight:300;letter-spacing:-.03em;line-height:1.08}
 .h2{font-size:var(--t-h2);font-weight:300;letter-spacing:-.03em;line-height:1.08}
 .h3{font-size:var(--t-h3);letter-spacing:-.015em;line-height:1.14}
-.statement{font-size:var(--t-statement);font-weight:300;letter-spacing:-.03em;line-height:1.08}
 .lead{font-size:var(--t-lead);line-height:1.42;color:var(--ink-2);max-width:44em}
-:is(.h1,.h2,.h3,.statement)+:is(.lead,p){margin-top:var(--s-text)}
+:is(.h1,.h2,.h3)+:is(.lead,p){margin-top:var(--s-text)}
 .small{font-size:var(--t-small);color:var(--ink-2)}
 .note{font-size:13px;color:var(--ink-2)}
 .center{text-align:center}
@@ -78,9 +77,9 @@ table{border-collapse:collapse}
 .sh+*{margin-top:var(--s-block)}
 /* the 12-column grid used by every two-part component */
 @media (min-width:1024px){
-  .g12,.duo,.split,.person,.demo,.hub a,.modules,.countries,.steps:not(.steps-stack),.foot-cols,.lines.full li{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--colgap)}
-  .split>:first-child,.person>:first-child,.demo>:first-child{grid-column:1/6}
-  .split>:last-child,.person>:last-child,.demo>:last-child{grid-column:7/13}
+  .g12,.duo,.split,.demo,.hub a,.modules,.countries,.steps:not(.steps-stack),.foot-cols,.lines.full li{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--colgap)}
+  .split>:first-child,.demo>:first-child{grid-column:1/6}
+  .split>:last-child,.demo>:last-child{grid-column:7/13}
   .hub a>:first-child,.lines.full li>:first-child{grid-column:1/6}
   .hub a>:last-child,.lines.full li>:last-child{grid-column:7/13}
 }
@@ -94,7 +93,7 @@ table{border-collapse:collapse}
   .duo{align-items:start}
   .duo-h{display:contents}
   .duo-h>.eyebrow,.duo-h>.step-n{grid-column:1/-1;grid-row:1}
-  .duo-h>:is(h2,.h2,.h3,.statement){grid-column:1/6;grid-row:2;font-size:var(--t-duo);line-height:1.1;letter-spacing:-.03em;font-weight:300}
+  .duo-h>:is(h2,.h2,.h3){grid-column:1/6;grid-row:2;font-size:var(--t-duo);line-height:1.1;letter-spacing:-.03em;font-weight:300}
   .duo-b{grid-column:7/13;grid-row:2;margin-top:0;padding-top:.35em}
   .duo>.span-all{grid-column:1/-1;grid-row:3;margin-top:clamp(64px,7vw,128px)}
   .duo>.span-all:is(.tile,.countries){margin-top:var(--s-block)}
@@ -353,16 +352,45 @@ table{border-collapse:collapse}
 .sources li{word-break:break-word}
 
 /* ---------- about ---------- */
-.person{display:grid;row-gap:var(--s-block);align-items:center}
-.person img{border-radius:clamp(18px,1.6vw,28px);width:100%}
-.person h3{font-size:var(--t-duo);font-weight:300;letter-spacing:-.03em}
-.person .role{color:var(--ink-2);font-size:var(--t-h4);margin-top:6px}
-.person p.bio{margin-top:var(--s-text);font-size:var(--t-lead);max-width:36em;line-height:1.55}
-.facts{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);column-gap:var(--colgap);font-size:var(--t-body)}
-.facts dt,.facts dd{margin:0;padding:14px 0;border-top:1px solid var(--line)}
-.facts dt{color:var(--ink-2)}
-.facts dd{overflow-wrap:anywhere}
+/* hero: the purpose is the page's single statement, two balanced lines on desktop */
+.purpose{font-size:var(--t-purpose);font-weight:300;letter-spacing:-.04em;line-height:1.05;max-width:17em;margin:0 auto}
+.purpose+.hero-desc{margin-top:var(--s-text)}
+/* values: three justified columns are too narrow on tablets (rivers), so they stack until the 12-column grid */
+@media (min-width:735px) and (max-width:1023px){.features.values.cols-3{grid-template-columns:minmax(0,1fr)}.features.values dd{max-width:none}}
+/* founder: square crop of the portrait on col 1-5, caption on col 7-12 centered against it */
+.founder{display:grid;row-gap:var(--s-text);align-items:center}
+.founder-photo{margin:0}
+.founder-photo img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:50% 30%;border-radius:clamp(18px,1.6vw,28px);background:#0b0b0d}
+.founder-name{font-size:var(--t-h2);font-weight:300;letter-spacing:-.03em;line-height:1.08}
+.founder-role{font-size:var(--t-h4);color:var(--ink-2);margin-top:8px}
+.founder-bio{margin-top:var(--s-text);padding-top:var(--s-text);border-top:1px solid var(--line)}
+.founder-bio .cta-row{margin-top:var(--s-text)}
+@media (min-width:735px) and (max-width:1023px){.founder{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--colgap)}}
+@media (min-width:1024px){.founder{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--colgap)}.founder-photo{grid-column:1/6}.founder-text{grid-column:7/13}}
+/* company facts: label and value share one line box so the hairlines and baselines line up */
+.facts{--fl:calc(var(--t-h4) * 1.35);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);column-gap:var(--colgap);margin:0}
+.facts dt,.facts dd{margin:0;padding:clamp(14px,1.2vw,18px) 0;border-top:1px solid var(--line);line-height:var(--fl)}
+.facts dt{color:var(--ink-2);font-size:var(--t-body)}
+.facts dd{font-size:var(--t-h4);overflow-wrap:anywhere}
+.facts dd a{color:var(--ink)}
+.facts dd a:hover{color:var(--action)}
 .facts dt:nth-last-of-type(1),.facts dd:last-child{border-bottom:1px solid var(--line)}
+@media (max-width:734px){
+  .facts{grid-template-columns:minmax(0,1fr)}
+  .facts dt{padding-bottom:0;font-size:var(--t-small);line-height:1.4}
+  .facts dd{border-top:0;padding-top:4px}
+  .facts dt:nth-last-of-type(1){border-bottom:0}
+}
+/* small laptops: the value column is narrow, so values drop to body size and URLs never break mid-word */
+@media (min-width:1024px) and (max-width:1279px){.facts dd{font-size:var(--t-body)}}
+/* accelerator credential: under the facts on phones, at the foot of col 1-5 on desktop (level with the last fact) */
+.accel{margin-top:var(--s-block)}
+.accel img{height:clamp(36px,2.6vw,44px);width:auto}
+.accel .small{margin-top:14px;max-width:30em}
+@media (min-width:1024px){
+  .duo.has-foot>.duo-b{grid-row:2/4}
+  .duo>.duo-foot{grid-column:1/6;grid-row:3;align-self:end;margin-top:0;padding-top:var(--s-block)}
+}
 
 /* ---------- resources hub (title col 1-5, description col 7-12) ---------- */
 .hub{list-style:none}
@@ -418,13 +446,12 @@ table{border-collapse:collapse}
 
 
 /* ---------- spacing glue: head -> component, centered statements ---------- */
-.wrap>:is(.h2,.h3,.statement,.lead,.sh)+:is(.modules,.steps,.faq,.hub,.lines,.countries,.person,.split,.tile,figure,.media-frame,.demo){margin-top:var(--s-block)}
+.wrap>:is(.h2,.h3,.lead,.sh)+:is(.modules,.steps,.faq,.hub,.lines,.countries,.split,.tile,figure,.media-frame,.demo){margin-top:var(--s-block)}
 :is(.faq,.modules,.countries,.hub,.steps)+:is(p,.cta-row){margin-top:var(--s-text)}
-:is(.h2,.h3,.statement,.lead)+:is(.lines,.plain,.steps-stack){margin-top:var(--s-text)}
-.statement.center,.center>.statement{max-width:24ch;margin-left:auto;margin-right:auto}
+:is(.h2,.h3,.lead)+:is(.lines,.plain,.steps-stack){margin-top:var(--s-text)}
 
 /* ---------- justified running text (paragraphs only; headings, labels and centered text stay as they are) ---------- */
-@media (min-width:735px){:is(.lead,.duo-b p,.prose p,.prose li,.faq-item p,.lines span,.person .bio,.hub span,.cap,.facts dd,.page-head .lead,.features.justify dd,.plain.justify li,.steps.justify p):not(.center):not(.center *):not(.one-line):not(.hero-lead *):not(.cta-band *){text-align:justify;text-justify:inter-word;hyphens:auto;-webkit-hyphens:auto;hyphenate-limit-chars:7 3 3}}
+@media (min-width:735px){:is(.lead,.duo-b p,.prose p,.prose li,.faq-item p,.lines span,.hub span,.cap,.facts dd,.page-head .lead,.features.justify dd,.plain.justify li,.steps.justify p):not(.center):not(.center *):not(.one-line):not(.hero-lead *):not(.cta-band *){text-align:justify;text-justify:inter-word;hyphens:auto;-webkit-hyphens:auto;hyphenate-limit-chars:7 3 3}}
 .center :is(.lead,p),.hero-lead .lead{text-align:center;hyphens:manual}
 
 
@@ -469,7 +496,7 @@ table{border-collapse:collapse}
 .story .lead{margin-left:auto;margin-right:auto;max-width:40em}
 .story-punch{margin-top:clamp(40px,4.5vw,72px);color:var(--ink)}
 /* hyphenation only where the measure is short (phones) */
-@media (min-width:735px){:is(.lead,.duo-b p,.prose p,.prose li,.faq-item p,.lines span,.person .bio,.hub span,.cap,.facts dd){hyphens:manual;-webkit-hyphens:manual}}
+@media (min-width:735px){:is(.lead,.duo-b p,.prose p,.prose li,.faq-item p,.lines span,.hub span,.cap,.facts dd){hyphens:manual;-webkit-hyphens:manual}}
 
 #problema{padding-block:clamp(40px,4vw,72px)}
 

@@ -1,9 +1,9 @@
-<header class="page-head">
-  <div class="wrap">
+<header class="hero" aria-labelledby="proposito">
+  <div class="hero-head">
     {{crumbs}}
-    <p class="eyebrow">About</p>
-    <h1 class="h1">We want filing a dossier to stop being an act of faith.</h1>
-    <p class="lead">Umplia, Inc. builds Umplia®, the platform that validates cosmetic regulatory dossiers before they are filed in Colombia, Peru, Ecuador and Bolivia.</p>
+    <p class="eyebrow">Our purpose</p>
+    <h1 class="purpose" id="proposito">Accelerate access to treatments that change and save lives.</h1>
+    <p class="hero-desc">Umplia, Inc. builds Umplia®, the platform that validates cosmetic regulatory dossiers before they are filed in Colombia, Peru, Ecuador and Bolivia.</p>
   </div>
 </header>
 
@@ -11,66 +11,54 @@
   <div class="wrap duo">
     <div class="duo-h">
       <p class="eyebrow">Our story</p>
-      <h2 class="h2" id="por-que">Why Umplia exists.</h2>
+      <h2 class="h2 reveal" id="por-que">Rigor shouldn’t depend on the hours in the day.</h2>
     </div>
     <div class="duo-b">
-      <p class="lead">Umplia was born from watching a regulatory affairs professional up close: hundreds of pages per dossier, reviewed by hand, one by one, knowing that a single inconsistent data point could become a request from the health authority.</p>
-      <p class="lead">That work demands rigor, and rigor shouldn’t depend on how many hours are left in the day. So we built Umplia: so regulatory teams spend their judgment deciding, not searching.</p>
+      <p class="lead reveal">Umplia was born from watching a regulatory affairs professional up close and seeing what was at stake in every review: a single inconsistent data point could become a request from the health authority.</p>
+      <p class="lead reveal">So we built Umplia: so regulatory teams spend their judgment deciding, not searching.</p>
     </div>
+    <dl class="features values span-all cols-3 justify" aria-label="Our values">
+      <div class="reveal"><dt>Rigor</dt><dd>We review the whole file, document by document, not a sample.</dd></div>
+      <div class="reveal"><dt>Integrity</dt><dd>We never fill in what the file doesn’t say. Every decision belongs to the professional.</dd></div>
+      <div class="reveal"><dt>Speed</dt><dd>Minutes instead of hours, so your team gets to filing sooner.</dd></div>
+    </dl>
   </div>
 </section>
 
-<section class="sec" aria-labelledby="mision">
-  <div class="wrap">
-    <p class="eyebrow">Purpose</p>
-    <h2 class="statement" id="mision">Accelerate access to treatments that change and save lives.</h2>
-  </div>
-</section>
-
-<section class="sec sec-grey" id="johny-aguilar" aria-labelledby="lidera">
-  <div class="wrap">
-    <p class="eyebrow">Team</p>
-    <h2 class="h2" id="lidera">Who leads Umplia.</h2>
-    <div class="person mt-l">
-      <div>{{img:johny-aguilar|Johny Aguilar, co-founder and CEO of Umplia|(min-width: 1880px) 680px, (min-width: 900px) 38vw, 92vw}}</div>
-      <div>
-        <h3>Johny Aguilar</h3>
-        <p class="role">Co-founder and CEO</p>
-        <p class="bio">Johny has 7 years of experience in the B2B technology industry across LATAM, the US and the UK. He holds an MBA from ESADE in Barcelona, Spain, and a postgraduate degree in Strategic Marketing from Pontificia Universidad Javeriana. He is based in Bogotá.</p>
-        <p class="mt-m"><a class="more" href="https://www.linkedin.com/in/johnyaguilarcustomersuccess/" rel="me noopener">LinkedIn</a></p>
+<section class="sec" id="johny-aguilar" aria-labelledby="lidera">
+  <div class="wrap founder">
+    <figure class="founder-photo reveal">{{img:johny-aguilar|Johny Aguilar, co-founder and CEO of Umplia|(min-width: 1880px) 680px, (min-width: 1024px) 38vw, (min-width: 735px) 46vw, 92vw}}</figure>
+    <div class="founder-text">
+      <p class="eyebrow">Who leads Umplia</p>
+      <h2 class="founder-name reveal" id="lidera">Johny Aguilar</h2>
+      <p class="founder-role">Co-founder and CEO</p>
+      <div class="founder-bio">
+        <p class="lead reveal">Johny has 7 years of experience in the B2B technology industry across LATAM, the US and the UK. He holds an MBA from ESADE in Barcelona, Spain, and a postgraduate degree in Strategic Marketing from Pontificia Universidad Javeriana. He is based in Bogotá.</p>
+        <p class="cta-row"><a class="more" href="https://www.linkedin.com/in/johnyaguilarcustomersuccess/" rel="me noopener">Johny on LinkedIn</a></p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="sec" aria-labelledby="eworks">
-  <div class="wrap duo">
-    <div class="duo-h">
-      <p class="eyebrow">Acceleration</p>
-      <h2 class="h2" id="eworks">Accelerated by Esade eWorks.</h2>
-    </div>
-    <div class="duo-b">
-      <p class="lead">Umplia is part of the eWorks Accelerator 2026 Cohort, Esade’s acceleration program.</p>
-      <p class="mt-m"><img src="{{a:img/eworks-accelerator.svg}}" width="188" height="48" alt="Esade eWorks Accelerator" loading="lazy"></p>
-    </div>
-  </div>
-</section>
-
 <section class="sec sec-grey" aria-labelledby="datos">
-  <div class="wrap duo">
+  <div class="wrap duo has-foot">
     <div class="duo-h">
-      <p class="eyebrow">Company</p>
-      <h2 class="h2" id="datos">Company facts.</h2>
+      <p class="eyebrow">The company</p>
+      <h2 class="h2 reveal" id="datos">Umplia, Inc.</h2>
     </div>
     <div class="duo-b">
       <dl class="facts">
-        <dt>Company</dt><dd>Umplia, Inc.</dd>
         <dt>Product</dt><dd>Umplia® for Cosmetics</dd>
         <dt>Markets</dt><dd>Colombia, Peru, Ecuador and Bolivia</dd>
         <dt>Operations</dt><dd>Bogotá, Colombia</dd>
         <dt>Contact</dt><dd>{{mailto}}</dd>
         <dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/company/umplia/" rel="noopener">linkedin.com/company/umplia</a></dd>
       </dl>
+    </div>
+    <div class="duo-foot accel reveal">
+      <p class="eyebrow">Acceleration</p>
+      <img src="{{a:img/eworks-accelerator.svg}}" width="188" height="48" alt="Esade eWorks Accelerator" loading="lazy">
+      <p class="small">Umplia is part of the eWorks Accelerator 2026 Cohort, Esade’s acceleration program.</p>
     </div>
   </div>
 </section>
