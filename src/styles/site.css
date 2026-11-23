@@ -78,11 +78,11 @@ table{border-collapse:collapse}
 .sh+*{margin-top:var(--s-block)}
 /* the 12-column grid used by every two-part component */
 @media (min-width:1024px){
-  .g12,.duo,.split,.tool,.person,.demo,.faq-item,.hub a,.modules,.countries,.steps:not(.steps-stack),.foot-cols,.lines.full li{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--colgap)}
+  .g12,.duo,.split,.tool,.person,.demo,.hub a,.modules,.countries,.steps:not(.steps-stack),.foot-cols,.lines.full li{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--colgap)}
   .split>:first-child,.tool>:first-child,.person>:first-child,.demo>:first-child{grid-column:1/6}
   .split>:last-child,.tool>:last-child,.person>:last-child,.demo>:last-child{grid-column:7/13}
-  .faq-item>:first-child,.hub a>:first-child,.lines.full li>:first-child{grid-column:1/6}
-  .faq-item>:last-child,.hub a>:last-child,.lines.full li>:last-child{grid-column:7/13}
+  .hub a>:first-child,.lines.full li>:first-child{grid-column:1/6}
+  .hub a>:last-child,.lines.full li>:last-child{grid-column:7/13}
 }
 
 /* ---------- two-column text sections: eyebrow on top, heading col 1-5, body col 7-12 ---------- */
@@ -292,11 +292,15 @@ table{border-collapse:collapse}
 @media (min-width:1024px){.countries{grid-template-columns:repeat(12,minmax(0,1fr))}.countries li{grid-column:span 3}}
 
 /* ---------- FAQ (question col 1-5, answer col 7-12) ---------- */
-.faq-item{padding:clamp(20px,2vw,30px) 0;border-top:1px solid var(--line)}
+.faq-item{border-top:1px solid var(--line)}
 .faq-item:last-child{border-bottom:1px solid var(--line)}
-.faq-item h3{font-size:var(--t-h4);font-weight:500;letter-spacing:-.015em;line-height:1.25}
-.faq-item p{color:var(--ink-2);margin-top:10px;max-width:46em;font-size:var(--t-body)}
-@media (min-width:1024px){.faq-item p{margin-top:0}}
+.faq-item summary{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:clamp(16px,1.6vw,22px) 0;cursor:pointer;list-style:none}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"";flex:none;width:12px;height:12px;background:linear-gradient(currentColor,currentColor) center/12px 1.5px no-repeat,linear-gradient(currentColor,currentColor) center/1.5px 12px no-repeat;color:var(--ink-2);transition:transform .25s var(--ease)}
+.faq-item[open] summary::after{transform:rotate(45deg)}
+.faq-item summary:hover h3{color:var(--action)}
+.faq-item h3{font-size:var(--t-h4);font-weight:500;letter-spacing:-.015em;line-height:1.3}
+.faq-item p{color:var(--ink-2);margin:0;padding:0 0 clamp(18px,1.8vw,26px);max-width:52em;font-size:var(--t-body)}
 
 /* ---------- forms ---------- */
 .demo{display:grid;row-gap:var(--s-block)}

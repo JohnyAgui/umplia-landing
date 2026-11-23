@@ -91,7 +91,7 @@ function picture(key, alt, sizes, opts = {}) {
 function faqHtml(list) {
   return (
     '<div class="faq">' +
-    list.map(([q, a]) => `<div class="faq-item"><h3>${q}</h3><p>${a}</p></div>`).join('') +
+    list.map(([q, a]) => `<details class="faq-item"><summary><h3>${q}</h3></summary><p>${a}</p></details>`).join('') +
     '</div>'
   );
 }
