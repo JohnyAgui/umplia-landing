@@ -268,20 +268,18 @@ table{border-collapse:collapse}
 .steps-stack .step-n{grid-row:span 2;margin:0;font-size:var(--t-h2)}
 .steps-stack p{grid-column:2}
 
-/* ---------- results (centered moment; pair sits on cols 3-6 / 7-10) ---------- */
-.results{text-align:center}
-.results-was{font-size:var(--t-lead);color:var(--ink-2)}
-.results-was s{color:var(--ink-3);margin-right:6px}
-.results-big{font-size:calc(var(--t-big) * 1.5);font-weight:300;letter-spacing:-.04em;line-height:1;margin-top:12px}
-.results-cap{font-size:var(--t-lead);color:var(--ink);font-weight:600;margin-top:8px}
-.results-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--colgap);margin-top:var(--s-block)}
-.results-pair p{position:relative;margin:0}
-.results-pair p+p::before{content:"";position:absolute;top:0;bottom:0;left:calc(var(--colgap) / -2);border-left:1px solid var(--line)}
-.results-pair strong{display:block;white-space:nowrap;font-size:calc(var(--t-big) * .75);letter-spacing:-.03em;line-height:1;font-weight:300}
-.results-pair span{display:block;color:var(--ink-2);margin-top:10px;font-size:var(--t-h4)}
-.results-note{font-size:clamp(13px,12px + .15vw,15px);color:var(--ink-2);margin-top:clamp(24px,2.4vw,40px)}
-@media (min-width:1024px){.results-pair{grid-template-columns:repeat(12,minmax(0,1fr))}.results-pair p:first-child{grid-column:3/7}.results-pair p:last-child{grid-column:7/11}}
-@media (max-width:600px){.results-pair{grid-template-columns:1fr;row-gap:20px}.results-pair p+p{padding-top:20px;border-top:1px solid var(--line)}.results-pair p+p::before{display:none}}
+/* ---------- results: three stats on the grid (cols 1 / 5 / 9), <dl> term/value ---------- */
+.stats{display:grid;row-gap:var(--s-text);margin:0}
+.sh+.stats{margin-top:var(--s-block)}
+.stat{display:flex;flex-direction:column;border-top:1px solid var(--line);padding-top:clamp(16px,1.6vw,24px)}
+.stat dd{margin:0}
+.stat-n{order:1;font-size:var(--t-num);font-weight:300;letter-spacing:-.04em;line-height:1;white-space:nowrap}
+.stat-n small{font-size:.28em;letter-spacing:0;color:var(--ink-2);margin-right:.25em}
+.stat dt{order:2;margin-top:clamp(12px,1.2vw,18px);font-size:var(--t-h4);line-height:1.3}
+.stat-ctx{order:3;margin-top:6px;color:var(--ink-2);font-size:var(--t-small)}
+@media (min-width:735px){.stats{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:var(--colgap)}}
+@media (min-width:1024px){.stats{grid-template-columns:repeat(12,minmax(0,1fr))}.stat{grid-column:span 4}}
+.results-note{font-size:13px;color:var(--ink-2);margin-top:var(--s-text)}
 
 /* ---------- countries (cols 1 / 4 / 7 / 10, left-aligned) ---------- */
 .countries{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--colgap);row-gap:var(--s-text)}
@@ -432,8 +430,8 @@ table{border-collapse:collapse}
 .statement.center,.center>.statement{max-width:24ch;margin-left:auto;margin-right:auto}
 
 /* ---------- justified running text (paragraphs only; headings, labels and centered text stay as they are) ---------- */
-@media (min-width:735px){:is(.lead,.duo-b p,.prose p,.prose li,.faq-item p,.lines span,.person .bio,.tool p,.hub span,.cap,.facts dd,.page-head .lead):not(.center):not(.center *):not(.one-line):not(.hero-lead *):not(.results *):not(.cta-band *){text-align:justify;text-justify:inter-word;hyphens:auto;-webkit-hyphens:auto;hyphenate-limit-chars:7 3 3}}
-.center :is(.lead,p),.hero-lead .lead,.results p{text-align:center;hyphens:manual}
+@media (min-width:735px){:is(.lead,.duo-b p,.prose p,.prose li,.faq-item p,.lines span,.person .bio,.tool p,.hub span,.cap,.facts dd,.page-head .lead):not(.center):not(.center *):not(.one-line):not(.hero-lead *):not(.cta-band *){text-align:justify;text-justify:inter-word;hyphens:auto;-webkit-hyphens:auto;hyphenate-limit-chars:7 3 3}}
+.center :is(.lead,p),.hero-lead .lead{text-align:center;hyphens:manual}
 
 
 /* ---------- review round 1 ---------- */
@@ -444,9 +442,6 @@ table{border-collapse:collapse}
 .hero-lead .lead{margin-left:auto;margin-right:auto;text-align:center}
 @media (max-width:734px){.hero-lead{text-align:center}.hero-lead .lead{text-align:center;hyphens:manual}}
 /* results: all captions share one style; balanced wraps; no double space after the strikethrough */
-.results-cap{color:var(--ink-2);font-weight:400}
-.results-was s{margin-right:0}
-.results-cap,.results-pair span{text-wrap:balance}
 /* closing line under the modules: a deliberate statement, separated from the module links */
 .lead.one-line{color:var(--ink);margin-top:var(--s-block);padding-top:var(--s-block);border-top:1px solid var(--line)}
 /* numbered steps: on phones the number sits above the title so every line shares the left edge */
