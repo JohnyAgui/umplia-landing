@@ -78,9 +78,9 @@ table{border-collapse:collapse}
 .sh+*{margin-top:var(--s-block)}
 /* the 12-column grid used by every two-part component */
 @media (min-width:1024px){
-  .g12,.duo,.split,.tool,.person,.demo,.hub a,.modules,.countries,.steps:not(.steps-stack),.foot-cols,.lines.full li{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--colgap)}
-  .split>:first-child,.tool>:first-child,.person>:first-child,.demo>:first-child{grid-column:1/6}
-  .split>:last-child,.tool>:last-child,.person>:last-child,.demo>:last-child{grid-column:7/13}
+  .g12,.duo,.split,.person,.demo,.hub a,.modules,.countries,.steps:not(.steps-stack),.foot-cols,.lines.full li{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--colgap)}
+  .split>:first-child,.person>:first-child,.demo>:first-child{grid-column:1/6}
+  .split>:last-child,.person>:last-child,.demo>:last-child{grid-column:7/13}
   .hub a>:first-child,.lines.full li>:first-child{grid-column:1/6}
   .hub a>:last-child,.lines.full li>:last-child{grid-column:7/13}
 }
@@ -364,17 +364,6 @@ table{border-collapse:collapse}
 .facts dd{overflow-wrap:anywhere}
 .facts dt:nth-last-of-type(1),.facts dd:last-child{border-bottom:1px solid var(--line)}
 
-/* ---------- tools (text col 1-5, screenshot col 7-12, every row the same) ---------- */
-.tools{display:grid;gap:clamp(64px,8vw,128px)}
-.tool{display:grid;row-gap:var(--s-text);align-items:center}
-.tool h3{font-size:var(--t-item);font-weight:300;letter-spacing:-.025em}
-.tool p{color:var(--ink-2);margin-top:12px}
-.tool ul{list-style:none;margin-top:18px}
-.tool li{padding:10px 0;border-top:1px solid var(--line);font-size:var(--t-body)}
-.badges{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:clamp(20px,2vw,28px);font-size:15px;color:var(--ink-2)}
-.center .badges{justify-content:center}
-.badges li{list-style:none}
-
 /* ---------- resources hub (title col 1-5, description col 7-12) ---------- */
 .hub{list-style:none}
 .hub li{border-top:1px solid var(--line)}
@@ -429,13 +418,13 @@ table{border-collapse:collapse}
 
 
 /* ---------- spacing glue: head -> component, centered statements ---------- */
-.wrap>:is(.h2,.h3,.statement,.lead,.sh)+:is(.modules,.steps,.faq,.tools,.hub,.lines,.countries,.person,.split,.tile,figure,.media-frame,.demo){margin-top:var(--s-block)}
+.wrap>:is(.h2,.h3,.statement,.lead,.sh)+:is(.modules,.steps,.faq,.hub,.lines,.countries,.person,.split,.tile,figure,.media-frame,.demo){margin-top:var(--s-block)}
 :is(.faq,.modules,.countries,.hub,.steps)+:is(p,.cta-row){margin-top:var(--s-text)}
 :is(.h2,.h3,.statement,.lead)+:is(.lines,.plain,.steps-stack){margin-top:var(--s-text)}
 .statement.center,.center>.statement{max-width:24ch;margin-left:auto;margin-right:auto}
 
 /* ---------- justified running text (paragraphs only; headings, labels and centered text stay as they are) ---------- */
-@media (min-width:735px){:is(.lead,.duo-b p,.prose p,.prose li,.faq-item p,.lines span,.person .bio,.tool p,.hub span,.cap,.facts dd,.page-head .lead,.features.justify dd,.plain.justify li,.steps.justify p):not(.center):not(.center *):not(.one-line):not(.hero-lead *):not(.cta-band *){text-align:justify;text-justify:inter-word;hyphens:auto;-webkit-hyphens:auto;hyphenate-limit-chars:7 3 3}}
+@media (min-width:735px){:is(.lead,.duo-b p,.prose p,.prose li,.faq-item p,.lines span,.person .bio,.hub span,.cap,.facts dd,.page-head .lead,.features.justify dd,.plain.justify li,.steps.justify p):not(.center):not(.center *):not(.one-line):not(.hero-lead *):not(.cta-band *){text-align:justify;text-justify:inter-word;hyphens:auto;-webkit-hyphens:auto;hyphenate-limit-chars:7 3 3}}
 .center :is(.lead,p),.hero-lead .lead{text-align:center;hyphens:manual}
 
 
@@ -480,7 +469,7 @@ table{border-collapse:collapse}
 .story .lead{margin-left:auto;margin-right:auto;max-width:40em}
 .story-punch{margin-top:clamp(40px,4.5vw,72px);color:var(--ink)}
 /* hyphenation only where the measure is short (phones) */
-@media (min-width:735px){:is(.lead,.duo-b p,.prose p,.prose li,.faq-item p,.lines span,.person .bio,.tool p,.hub span,.cap,.facts dd){hyphens:manual;-webkit-hyphens:manual}}
+@media (min-width:735px){:is(.lead,.duo-b p,.prose p,.prose li,.faq-item p,.lines span,.person .bio,.hub span,.cap,.facts dd){hyphens:manual;-webkit-hyphens:manual}}
 
 #problema{padding-block:clamp(40px,4vw,72px)}
 
@@ -553,5 +542,12 @@ table{border-collapse:collapse}
   :is(.duo-b,.split>:last-child) .lines li{grid-template-columns:minmax(0,1fr)}
   :is(.duo-b,.split>:last-child) .lines li>:is(:first-child,:last-child){grid-column:1/-1}
 }
+
+/* ---------- Umplia Tools: home hero with breadcrumb and product shot; screenshot above text in a pair; figures under a hairline ---------- */
+.hero .crumbs{margin-bottom:clamp(28px,4vw,56px)}
+.hero-desc{text-wrap:balance}
+@media (max-width:734px){.hero-media .tile{border-radius:0}}
+.pair>div>.tile+*{margin-top:var(--s-text)}
+.pair+.stats{margin-top:var(--s-block);padding-top:var(--s-block);border-top:1px solid var(--line)}
 
 .sh>.step-n+.h3{font-size:var(--t-duo);font-weight:300;line-height:1.1;letter-spacing:-.03em}
