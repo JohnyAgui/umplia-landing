@@ -433,9 +433,55 @@ table{border-collapse:collapse}
 .statement.center,.center>.statement{max-width:24ch;margin-left:auto;margin-right:auto}
 
 /* ---------- justified running text (paragraphs only; headings, labels and centered text stay as they are) ---------- */
-:is(.lead,.duo-b p,.prose p,.prose li,.faq-item p,.lines span,.person .bio,.tool p,.hub span,.steps p,.module p,.cap,.facts dd,.page-head .lead):not(.center):not(.one-line){text-align:justify;text-justify:inter-word;hyphens:auto;-webkit-hyphens:auto;hyphenate-limit-chars:7 3 3}
+:is(.lead,.duo-b p,.prose p,.prose li,.faq-item p,.lines span,.person .bio,.tool p,.hub span,.steps p,.module p,.cap,.facts dd,.page-head .lead):not(.center):not(.center *):not(.one-line):not(.hero-lead *):not(.results *):not(.cta-band *){text-align:justify;text-justify:inter-word;hyphens:auto;-webkit-hyphens:auto;hyphenate-limit-chars:7 3 3}
 .center :is(.lead,p),.hero-lead .lead,.results p{text-align:center;hyphens:manual}
-@media (max-width:734px){.hero-lead .lead{text-align:justify;hyphens:auto}}
+
+
+/* ---------- review round 1 ---------- */
+/* page end: CTA band is white with a hairline; the footer always starts with a hairline */
+.cta-band{background:#fff;border-top:1px solid var(--line)}
+.foot{border-top:1px solid var(--line)}
+/* hero: one axis on every screen; caption centered under the video */
+.hero-lead .lead{margin-left:auto;margin-right:auto;text-align:center}
+@media (max-width:734px){.hero-lead{text-align:center}.hero-lead .lead{text-align:center;hyphens:manual}}
+/* results: all captions share one style; balanced wraps; no double space after the strikethrough */
+.results-cap{color:var(--ink-2);font-weight:400}
+.results-was s{margin-right:0}
+.results-cap,.results-pair span{text-wrap:balance}
+/* closing line under the modules: a deliberate statement, separated from the module links */
+.lead.one-line{color:var(--ink);margin-top:var(--s-block);padding-top:var(--s-block);border-top:1px solid var(--line)}
+/* numbered steps: on phones the number sits above the title so every line shares the left edge */
+@media (max-width:734px){.steps-stack li{grid-template-columns:1fr}.steps-stack .step-n{grid-row:auto;margin-bottom:8px}.steps-stack p{grid-column:1}}
+/* step headings read as section headings at every size */
+.duo-h>.h3{font-size:var(--t-duo);line-height:1.1;letter-spacing:-.02em}
+/* labels inside half-width lists never wrap awkwardly */
+:is(.duo-b,.split>:last-child) .lines strong{font-size:var(--t-body)}
+/* footer: the separator never starts a line on phones */
+@media (max-width:734px){.foot-sep{display:none}.foot-base p:first-child{display:grid;gap:4px}}
+/* demo page breadcrumb inside the band */
+.demo-crumbs{margin-bottom:clamp(28px,4vw,56px)}
+/* guide: comfortable reading measure, single-column contents, long title on the h2 step */
+.prose{max-width:46em}
+.toc{columns:1}
+.page-head .h1-long{font-size:var(--t-h2);max-width:24ch}
+/* tables on phones: wrap instead of clipping; the country table becomes labeled rows */
+@media (max-width:734px){
+  .table-wrap table{min-width:0}
+  .table-wrap.stack thead{display:none}
+  .table-wrap.stack :is(table,tbody,tr,th,td){display:block;width:100%}
+  .table-wrap.stack tr{padding:14px 0;border-bottom:1px solid var(--line-2)}
+  .table-wrap.stack th[scope=row]{padding:0 0 6px;border:0;font-size:var(--t-body)}
+  .table-wrap.stack td{position:relative;padding:6px 0 6px 6.5em;border:0}
+  .table-wrap.stack td::before{content:attr(data-label);position:absolute;left:0;top:6px;font-weight:600;color:var(--ink-2)}
+}
+
+/* ---------- hero description + narrative block ---------- */
+.hero-desc{max-width:38em;margin:clamp(14px,1.4vw,20px) auto 0;font-size:var(--t-lead);line-height:1.42;color:var(--ink-2)}
+.story{max-width:52rem;margin:0 auto}
+.story .lead{margin-left:auto;margin-right:auto;max-width:40em}
+.story-punch{margin-top:clamp(40px,4.5vw,72px);color:var(--ink)}
+/* hyphenation only where the measure is short (phones) */
+@media (min-width:735px){:is(.lead,.duo-b p,.prose p,.prose li,.faq-item p,.lines span,.person .bio,.tool p,.hub span,.steps p,.module p,.cap,.facts dd){hyphens:manual;-webkit-hyphens:manual}}
 
 /* ---------- reveal (only once JS is running; never hides content without JS) ---------- */
 @media (prefers-reduced-motion:no-preference){
