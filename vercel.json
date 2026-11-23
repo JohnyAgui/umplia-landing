@@ -17,9 +17,7 @@
     { "source": "/herramientas", "destination": "/recursos/umplia-tools", "permanent": true },
     { "source": "/cosmeticos", "destination": "/#proceso", "permanent": true },
     { "source": "/en/cosmetics", "destination": "/en#proceso", "permanent": true },
-    { "source": "/como-funciona", "destination": "/#proceso", "permanent": true },
-    { "source": "/seguridad", "destination": "/", "permanent": true },
-    { "source": "/en/security", "destination": "/en", "permanent": true }
+    { "source": "/como-funciona", "destination": "/#proceso", "permanent": true }
   ],
   "headers": [
     {
