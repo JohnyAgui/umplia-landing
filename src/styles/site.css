@@ -435,7 +435,7 @@ table{border-collapse:collapse}
 .statement.center,.center>.statement{max-width:24ch;margin-left:auto;margin-right:auto}
 
 /* ---------- justified running text (paragraphs only; headings, labels and centered text stay as they are) ---------- */
-@media (min-width:735px){:is(.lead,.duo-b p,.prose p,.prose li,.faq-item p,.lines span,.person .bio,.tool p,.hub span,.cap,.facts dd,.page-head .lead,.features.justify dd,.plain.justify li):not(.center):not(.center *):not(.one-line):not(.hero-lead *):not(.cta-band *){text-align:justify;text-justify:inter-word;hyphens:auto;-webkit-hyphens:auto;hyphenate-limit-chars:7 3 3}}
+@media (min-width:735px){:is(.lead,.duo-b p,.prose p,.prose li,.faq-item p,.lines span,.person .bio,.tool p,.hub span,.cap,.facts dd,.page-head .lead,.features.justify dd,.plain.justify li,.steps.justify p):not(.center):not(.center *):not(.one-line):not(.hero-lead *):not(.cta-band *){text-align:justify;text-justify:inter-word;hyphens:auto;-webkit-hyphens:auto;hyphenate-limit-chars:7 3 3}}
 .center :is(.lead,p),.hero-lead .lead{text-align:center;hyphens:manual}
 
 

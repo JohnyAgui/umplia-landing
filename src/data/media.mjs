@@ -6,7 +6,7 @@ export const IMAGES = {
   'film-poster': { ratio: [1280, 720], widths: [1280], jpg: [1280], avif: false },
   reporte: { ratio: [2860, 1798], widths: [1430, 2860], jpg: [1430], avif: true },
   proceso: { ratio: [1496, 936], widths: [748, 1496], jpg: [748], avif: true },
-  tipo: { ratio: [1826, 604], widths: [913, 1826], jpg: [913], avif: true },
+  mod: { ratio: [2666, 1688], widths: [1333, 2666], jpg: [1333], avif: true },
   'johny-aguilar': { ratio: [960, 1200], widths: [640, 960], jpg: [640, 960], avif: true },
   'tool-divisor-pdf': { ratio: [1320, 660], widths: [1320], jpg: [], avif: true },
   'tool-armar-pdf': { ratio: [1320, 880], widths: [1320], jpg: [], avif: true },
