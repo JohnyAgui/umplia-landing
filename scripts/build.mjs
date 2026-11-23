@@ -213,7 +213,7 @@ function head(page) {
   }
   L.push('<meta name="theme-color" content="#ffffff">');
   L.push('<meta name="color-scheme" content="light">');
-  L.push(`<link rel="preload" href="${asset('fonts/inter-latin-600.woff2')}" as="font" type="font/woff2" crossorigin>`);
+  L.push(`<link rel="preload" href="${asset('fonts/inter-latin-300.woff2')}" as="font" type="font/woff2" crossorigin>`);
   L.push(`<link rel="preload" href="${asset('fonts/inter-latin-400.woff2')}" as="font" type="font/woff2" crossorigin>`);
   L.push(`<link rel="stylesheet" href="${CSS}">`);
   if (page.kind === 'home') {
