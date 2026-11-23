@@ -1,0 +1,53 @@
+<form class="demo-form" action="https://formspree.io/f/xdalqnkp" method="POST" novalidate data-form
+  data-msg-required="Please fill in this field."
+  data-msg-email="Enter a valid email, such as name@company.com."
+  data-msg-corp="Please use your company email. Personal addresses such as Gmail, Hotmail, Outlook or Yahoo are not accepted."
+  data-msg-phone="Enter a mobile number with at least 7 digits."
+  data-msg-consent="To send the request, please check the data processing authorization."
+  data-msg-fail="We could not send your request. Please try again or write to {{email}}."
+  data-msg-sending="Sending…"
+  data-msg-ok="Thank you, {nombre}. We will write to {email} to schedule the demo.">
+  <div class="field-row">
+    <div class="field">
+      <label for="f-nombre">First name</label>
+      <input id="f-nombre" name="nombre" autocomplete="given-name" required aria-describedby="e-nombre">
+      <p class="field-err" id="e-nombre" hidden></p>
+    </div>
+    <div class="field">
+      <label for="f-apellido">Last name</label>
+      <input id="f-apellido" name="apellido" autocomplete="family-name" required aria-describedby="e-apellido">
+      <p class="field-err" id="e-apellido" hidden></p>
+    </div>
+  </div>
+  <div class="field">
+    <label for="f-empresa">Company</label>
+    <input id="f-empresa" name="empresa" autocomplete="organization" required aria-describedby="e-empresa">
+    <p class="field-err" id="e-empresa" hidden></p>
+  </div>
+  <div class="field">
+    <label for="f-email">Work email</label>
+    <input id="f-email" name="email" type="email" autocomplete="email" required aria-describedby="e-email">
+    <p class="field-err" id="e-email" hidden></p>
+  </div>
+  <div class="field">
+    <label for="f-celular">Mobile</label>
+    <input id="f-celular" name="celular" type="tel" autocomplete="tel" required aria-describedby="e-celular">
+    <p class="field-err" id="e-celular" hidden></p>
+  </div>
+  <div class="field-check">
+    <input type="checkbox" id="f-consent" name="consentimiento" value="sí" required aria-describedby="e-consent">
+    <label for="f-consent">I authorize Umplia, Inc. to process my personal data to answer my request, under the <a href="/en/privacy">Personal data policy</a>.</label>
+    <p class="field-err" id="e-consent" hidden></p>
+  </div>
+  <input type="hidden" name="source" value="umplia.com landing page">
+  <input type="hidden" name="consentimiento_version" value="2026-11-23">
+  <input type="hidden" name="lang" value="en">
+  <div class="hp" aria-hidden="true"><label for="f-gotcha">Leave this field empty</label><input id="f-gotcha" name="_gotcha" tabindex="-1" autocomplete="off"></div>
+  <p class="form-status" role="status" aria-live="polite"></p>
+  <button class="btn btn-lg" type="submit">Book a demo</button>
+  <p class="form-alt">Or write to {{mailto}}</p>
+</form>
+<div class="form-ok" hidden tabindex="-1">
+  <p class="form-ok-title">Request sent</p>
+  <p data-ok-text></p>
+</div>
