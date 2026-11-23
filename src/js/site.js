@@ -185,7 +185,6 @@
         ok.querySelector('[data-ok-text]').textContent = msg('ok').replace('{nombre}', field('nombre').value.trim()).replace('{email}', field('email').value.trim());
         form.hidden = true; ok.hidden = false; ok.focus();
       };
-      if (field('_gotcha').value) return done();
       var data = {
         nombre: field('nombre').value.trim(),
         apellido: field('apellido').value.trim(),
