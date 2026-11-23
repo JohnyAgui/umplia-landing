@@ -43,13 +43,6 @@ export const PAGES = [
     llms: ['Producto', 'validación de cambios a NSO ya otorgadas (19 tipos de modificación).'],
   },
   {
-    id: 'seguridad', lang: 'es', path: '/seguridad', src: 'es/seguridad.html', kind: 'page', alt: 'en-security', updated: D,
-    title: 'Seguridad: dónde se guardan tus dossiers | Umplia',
-    description: 'Los dossiers se guardan en Colombia, cifrados en reposo, y los analiza un modelo de IA de código abierto que opera Umplia. No se usan para entrenar.',
-    crumbs: [['Seguridad', '/seguridad']],
-    llms: ['Producto', 'dónde se guardan y cómo se analizan los dossiers.'],
-  },
-  {
     id: 'recursos', lang: 'es', path: '/recursos', src: 'es/recursos/index.html', kind: 'page', updated: D,
     title: 'Recursos para asuntos regulatorios de cosméticos | Umplia',
     description: 'Herramientas gratuitas, guías de NSO para la Comunidad Andina, preguntas frecuentes y la película de lanzamiento de Umplia.',
@@ -123,13 +116,6 @@ export const PAGES = [
     title: 'Umplia for Cosmetics | Validate your NSO before you file',
     description: 'Umplia validates cosmetic dossiers for New NSOs and Modifications before you file with INVIMA, DIGEMID, ARCSA and AGEMED. Book a demo.',
     llms: ['English', 'Umplia for Cosmetics.'],
-  },
-  {
-    id: 'en-security', lang: 'en', path: '/en/security', src: 'en/security.html', kind: 'page', alt: 'seguridad', updated: D,
-    title: 'Security: where your dossiers are stored | Umplia',
-    description: 'Dossiers are stored in Colombia, encrypted at rest, and analyzed by an open-source AI model operated by Umplia. They are never used for training.',
-    crumbs: [['Security', '/en/security']],
-    llms: ['English', 'Security.'],
   },
   {
     id: 'en-about', lang: 'en', path: '/en/about', src: 'en/about.html', kind: 'about', alt: 'nosotros', updated: D, og: 'og-nosotros.jpg',
