@@ -262,7 +262,9 @@ for (const page of PAGES) {
       .replace('{{bodyclass}}', page.kind === 'home' ? 'is-home' : ''),
     page,
   );
-  write(join(DIST, outFile(page)), html);
+  // In headings the ® is set small and raised, proportional to the type (body text keeps the plain glyph)
+  const out = html.replace(/<h1\b[\s\S]*?<\/h1>/g, (h) => h.replace(/®(?!<\/span>)/g, '<span class="reg">®</span>'));
+  write(join(DIST, outFile(page)), out);
 }
 
 // ---------- 5. Static files, manifest, sitemap, llms.txt ----------
