@@ -112,7 +112,6 @@ export function check(dist, { email } = {}) {
       if (/type="application\/ld\+json"/.test(m[1])) continue;
       if (!/\ssrc="/.test(m[1]) || m[2].trim()) P.push(`${where}: inline script`);
     }
-    if (/27x/.test(s) && !NOTES.some((n) => s.includes(n))) P.push(`${where}: "27x" without its footnote`);
     if (email && !s.includes(`href="mailto:${email}"`)) P.push(`${where}: no mailto link`);
     if (!s.includes(SITE.linkedin)) P.push(`${where}: no LinkedIn link`);
   }

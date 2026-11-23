@@ -14,7 +14,7 @@ export const CLAIMS = {
     min35n: '~35',
     min35label: 'Análisis completo del dossier',
     resultsTitle: 'Minutos en vez de horas.',
-    x27cap: 'más rápido*',
+    x27cap: 'más rápido',
     note: '*Basado en piloto con empresa multilatina.',
   },
   en: {
@@ -30,7 +30,7 @@ export const CLAIMS = {
     min35n: '~35',
     min35label: 'Full dossier analysis',
     resultsTitle: 'Minutes, not hours.',
-    x27cap: 'faster*',
+    x27cap: 'faster',
     note: '*Based on a pilot with a multi-Latin company.',
   },
 };

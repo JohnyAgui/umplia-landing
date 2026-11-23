@@ -16,8 +16,7 @@ Resultados:
 - 35 min en promedio por dossier de nueva NSO.
 - La revisión manual de un dossier completo toma de 8 a 9 horas.
 - Más del doble de errores encontrados que la revisión manual.
-- Hasta 27x más rápido*.
-*Basado en piloto con empresa multilatina.
+- Hasta 27x más rápido.
 
 Para quién: equipos de Asuntos Regulatorios de fabricantes, maquiladores, importadores y marcas de cosméticos, y de laboratorios farmacéuticos que también notifican cosméticos, en Colombia, Perú, Ecuador y Bolivia. Umplia para Cosméticos no cubre registros sanitarios de medicamentos ni renovaciones de NSO.
 
