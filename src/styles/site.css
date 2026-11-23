@@ -16,7 +16,7 @@
   /* layout */
   --max:1680px;--gut:clamp(20px,5vw,96px);--colgap:clamp(16px,2.2vw,40px);--nav-h:56px;
   /* vertical rhythm: section padding, label->title, title->text, head->content */
-  --pad:clamp(64px,6.5vw,128px);--s-label:clamp(12px,1vw,18px);--s-text:clamp(18px,1.6vw,28px);--s-block:clamp(40px,4.5vw,80px);
+  --pad:clamp(56px,5vw,96px);--s-label:clamp(12px,1vw,18px);--s-text:clamp(18px,1.6vw,28px);--s-block:clamp(40px,4.5vw,80px);
   /* type scale (apple.com steps; these are the large values, >=1069px) */
   --t-body:17px;--t-small:14px;--t-label:12px;--t-lead:21px;
   --t-hero:56px;--t-hero-sub:28px;--t-hero-eyebrow:21px;
@@ -230,18 +230,16 @@ table{border-collapse:collapse}
 /* ---------- modules (col 1 / col 7, divider sits in the gutter) ---------- */
 .modules{display:grid;row-gap:var(--s-block)}
 .module{position:relative}
-.num{display:block;font-size:var(--t-num);font-weight:300;line-height:1;letter-spacing:-.05em;margin-bottom:clamp(14px,1.4vw,24px)}
+.num{display:block;font-size:calc(var(--t-num) * .75);font-weight:300;line-height:1;letter-spacing:-.05em;margin-bottom:clamp(14px,1.4vw,24px)}
 .module h3{font-size:var(--t-item);font-weight:300;letter-spacing:-.025em}
 .module p{color:var(--ink-2);margin-top:8px;font-size:var(--t-lead);max-width:30em}
 .module .more{margin-top:18px}
-.module+.module{border-top:1px solid var(--line);padding-top:var(--s-block)}
-@media (min-width:735px) and (max-width:1023px){.modules{grid-template-columns:1fr 1fr;column-gap:var(--colgap)}.module+.module{border-top:0;padding-top:0}}
-@media (min-width:1024px){
-  .modules{row-gap:0}
-  .module{grid-column:span 6}
-  .module+.module{border-top:0;padding-top:0}
-  .module+.module::before{content:"";position:absolute;top:0;bottom:0;left:calc(var(--colgap) / -2);border-left:1px solid var(--line)}
-}
+.modules{row-gap:var(--colgap)}
+.module{display:flex;flex-direction:column;background:#fff;border-radius:clamp(18px,1.6vw,28px);padding:clamp(28px,3vw,48px)}
+.sec:not(.sec-grey) .module{background:var(--grey)}
+.module .more{margin-top:auto;padding-top:clamp(20px,2vw,28px)}
+@media (min-width:735px) and (max-width:1023px){.modules{grid-template-columns:1fr 1fr;column-gap:var(--colgap)}}
+@media (min-width:1024px){.module{grid-column:span 6}}
 
 /* ---------- hairline lists ---------- */
 .lines{list-style:none}
@@ -434,7 +432,7 @@ table{border-collapse:collapse}
 .statement.center,.center>.statement{max-width:24ch;margin-left:auto;margin-right:auto}
 
 /* ---------- justified running text (paragraphs only; headings, labels and centered text stay as they are) ---------- */
-:is(.lead,.duo-b p,.prose p,.prose li,.faq-item p,.lines span,.person .bio,.tool p,.hub span,.steps p,.module p,.cap,.facts dd,.page-head .lead):not(.center):not(.center *):not(.one-line):not(.hero-lead *):not(.results *):not(.cta-band *){text-align:justify;text-justify:inter-word;hyphens:auto;-webkit-hyphens:auto;hyphenate-limit-chars:7 3 3}
+@media (min-width:735px){:is(.lead,.duo-b p,.prose p,.prose li,.faq-item p,.lines span,.person .bio,.tool p,.hub span,.steps p,.cap,.facts dd,.page-head .lead):not(.center):not(.center *):not(.one-line):not(.hero-lead *):not(.results *):not(.cta-band *){text-align:justify;text-justify:inter-word;hyphens:auto;-webkit-hyphens:auto;hyphenate-limit-chars:7 3 3}}
 .center :is(.lead,p),.hero-lead .lead,.results p{text-align:center;hyphens:manual}
 
 
@@ -482,9 +480,40 @@ table{border-collapse:collapse}
 .story .lead{margin-left:auto;margin-right:auto;max-width:40em}
 .story-punch{margin-top:clamp(40px,4.5vw,72px);color:var(--ink)}
 /* hyphenation only where the measure is short (phones) */
-@media (min-width:735px){:is(.lead,.duo-b p,.prose p,.prose li,.faq-item p,.lines span,.person .bio,.tool p,.hub span,.steps p,.module p,.cap,.facts dd){hyphens:manual;-webkit-hyphens:manual}}
+@media (min-width:735px){:is(.lead,.duo-b p,.prose p,.prose li,.faq-item p,.lines span,.person .bio,.tool p,.hub span,.steps p,.cap,.facts dd){hyphens:manual;-webkit-hyphens:manual}}
 
-#problema{padding-top:clamp(40px,4vw,72px);padding-bottom:clamp(56px,5vw,96px)}
+#problema{padding-top:clamp(40px,4vw,72px)}
+
+/* ---------- problem + product pair (col 1-5 / col 7-12) ---------- */
+.pair{display:grid;row-gap:var(--s-block)}
+.pair .h2{font-size:var(--t-duo);line-height:1.1}
+.pair .cta-row{margin-top:var(--s-text)}
+@media (min-width:1024px){
+  .pair{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--colgap);align-items:start}
+  .pair>:first-child{grid-column:1/7}
+  .pair>:last-child{grid-column:7/13}
+}
+.pair+.tile{margin-top:var(--s-block)}
+
+.modules-lead{max-width:none}
+@media (min-width:1280px){.modules-lead{white-space:nowrap}}
+.modules-lead+.modules{margin-top:var(--s-block)}
+
+/* ---------- feature grids (<dl>): 2-4 terms side by side under a section head ---------- */
+.features{display:grid;gap:var(--s-text) var(--colgap);margin:0}
+.features>div{border-top:1px solid var(--line);padding-top:clamp(16px,1.6vw,24px)}
+.features dt{font-size:var(--t-h4);font-weight:500;line-height:1.3}
+.features dd{margin:8px 0 0;color:var(--ink-2);max-width:34em}
+.sh+.features,.wrap>.features{margin-top:var(--s-block)}
+.features+.tile{margin-top:var(--s-block)}
+@media (min-width:735px){.features.cols-2,.features.cols-4{grid-template-columns:repeat(2,minmax(0,1fr))}.features.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (min-width:1024px){
+  .features{grid-template-columns:repeat(12,minmax(0,1fr))!important}
+  .features.cols-2>div{grid-column:span 6}.features.cols-3>div{grid-column:span 4}.features.cols-4>div{grid-column:span 3}
+  .duo>.features.span-all{margin-top:var(--s-block)}
+  .duo>.features.span-all~.span-all{grid-row:4}
+}
+.duo>.features.span-all{margin-top:var(--s-block)}
 
 /* ---------- reveal (only once JS is running; never hides content without JS) ---------- */
 @media (prefers-reduced-motion:no-preference){
@@ -504,3 +533,5 @@ table{border-collapse:collapse}
   :is(.duo-b,.split>:last-child) .lines li{grid-template-columns:minmax(0,1fr)}
   :is(.duo-b,.split>:last-child) .lines li>:is(:first-child,:last-child){grid-column:1/-1}
 }
+
+.sh>.step-n+.h3{font-size:var(--t-duo);font-weight:300;line-height:1.1;letter-spacing:-.03em}
